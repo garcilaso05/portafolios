@@ -57,6 +57,32 @@ document.addEventListener('DOMContentLoaded', () => {
       images[currentIndex].classList.add('active');
     }, 5000); // Cambia de imagen cada 5 segundos
   });
+
+
+
+// 2. Partículas Aleatorias (más sutiles)
+function createParticle() {
+  const particle = document.createElement("div");
+  particle.className = "sparkle";
+  document.body.appendChild(particle);
+
+  const size = Math.random() * 5 + 2; // Tamaño más pequeño (2px a 7px)
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  particle.style.left = `${Math.random() * window.innerWidth}px`;
+  particle.style.top = `${Math.random() * window.innerHeight}px`;
+
+  setTimeout(() => {
+    particle.remove();
+  }, 1200); // Duran menos tiempo (1.2s)
+}
+
+// Generar partículas aleatorias
+setInterval(() => {
+  createParticle();
+}, Math.random() * 400); // Tiempo aleatorio entre 1.5s y 2.5s
+
+
   
   
 
