@@ -3,6 +3,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('.section');
   const photos = document.querySelectorAll('.photo-gallery img');
 
+  const handleCarousels = () => {
+    document.querySelectorAll('.carousel').forEach(carousel => {
+      const images = carousel.querySelectorAll('.carousel-image');
+      let currentIndex = 0;
+    
+      setInterval(() => {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+      }, 5000);
+    });
+  };
+
+  handleCarousels();
+
   const updateActiveMenu = (targetId) => {
     menuLinks.forEach(link => {
       link.classList.remove('active');
@@ -28,6 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   };
+
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    const images = carousel.querySelectorAll('.carousel-image');
+    let currentIndex = 0;
+  
+    setInterval(() => {
+      // Oculta la imagen actual
+      images[currentIndex].classList.remove('active');
+      // Cambia al siguiente índice
+      currentIndex = (currentIndex + 1) % images.length;
+      // Muestra la nueva imagen con la animación
+      images[currentIndex].classList.add('active');
+    }, 5000); // Cambia de imagen cada 5 segundos
+  });
+  
+  
 
   menuLinks.forEach(link => {
     link.addEventListener('click', (e) => {
