@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+
+
   handleCarousels();
 
   const updateActiveMenu = (targetId) => {
@@ -46,6 +48,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.carousel').forEach(carousel => {
     const images = carousel.querySelectorAll('.carousel-image');
+    let currentIndex = 0;
+  
+    setInterval(() => {
+      // Oculta la imagen actual
+      images[currentIndex].classList.remove('active');
+      // Cambia al siguiente índice
+      currentIndex = (currentIndex + 1) % images.length;
+      // Muestra la nueva imagen con la animación
+      images[currentIndex].classList.add('active');
+    }, 5000); // Cambia de imagen cada 5 segundos
+  });
+
+  document.querySelectorAll('.carousel2').forEach(carousel2 => {
+    const images = carousel2.querySelectorAll('.carousel2-image');
     let currentIndex = 0;
   
     setInterval(() => {
