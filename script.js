@@ -84,6 +84,11 @@ setInterval(() => {
 
 
   
+
+
+
+
+
   
 
   menuLinks.forEach(link => {
@@ -111,3 +116,24 @@ setInterval(() => {
   updateActiveMenu(defaultSection);
   triggerTypewriter(defaultSection);
 });
+
+
+function nextImage(button) {
+  const galleryContainer = button.parentElement.querySelector('.gallery-container');
+  const images = galleryContainer.querySelectorAll('.gallery-image');
+  let activeIndex = Array.from(images).findIndex(image => image.classList.contains('active'));
+  
+  images[activeIndex].classList.remove('active');
+  activeIndex = (activeIndex + 1) % images.length; // Siguiente imagen
+  images[activeIndex].classList.add('active');
+}
+
+function prevImage(button) {
+  const galleryContainer = button.parentElement.querySelector('.gallery-container');
+  const images = galleryContainer.querySelectorAll('.gallery-image');
+  let activeIndex = Array.from(images).findIndex(image => image.classList.contains('active'));
+  
+  images[activeIndex].classList.remove('active');
+  activeIndex = (activeIndex - 1 + images.length) % images.length; // Imagen anterior
+  images[activeIndex].classList.add('active');
+}
