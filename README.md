@@ -1,4 +1,4 @@
-# Portfolio Web - Roger
+# Portfolio Web - Roger García Doncel
 
 Bienvenido/a a mi portafolio web. Aquí encontrarás una muestra de mis estudios, reconocimientos y experiencia laboral. Este repositorio contiene el código fuente de mi página web.
 
@@ -37,11 +37,8 @@ Bienvenido/a a mi portafolio web. Aquí encontrarás una muestra de mis estudios
 
 ## Capturas de pantalla
 
-### Vista principal
-![Vista principal](ruta/a/tu/captura1.png)
+![2025-01-19-174201_hyprshot](https://github.com/user-attachments/assets/4b340991-b006-4a4f-aaa4-4e14a1bf7084)
 
-### Sección de proyectos
-![Sección de proyectos](ruta/a/tu/captura2.png)
 
 ---
 
