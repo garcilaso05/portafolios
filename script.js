@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const menuLinks = document.querySelectorAll('nav a');
   const sections = document.querySelectorAll('.section');
-  let isSpanish = true;
+  let languageIndex = 0; // 0: Spanish, 1: English, 2: Catalan
 
   const handleCarousels = () => {
     document.querySelectorAll('.carousel').forEach(carousel => {
@@ -48,15 +48,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateMenuLinks = () => {
     menuLinks.forEach(link => {
       const targetId = link.dataset.target;
-      link.dataset.target = isSpanish ? targetId.replace('-en', '') : `${targetId}-en`;
-      link.textContent = isSpanish ? link.textContent.replace('Biography', 'Biografía')
-                                   .replace('Studies', 'Estudios')
-                                   .replace('Work Experience', 'Experiencia')
-                                   .replace('Recognitions', 'Reconocimientos')
-                                 : link.textContent.replace('Biografía', 'Biography')
-                                   .replace('Estudios', 'Studies')
-                                   .replace('Experiencia', 'Work Experience')
-                                   .replace('Reconocimientos', 'Recognitions');
+      if (languageIndex === 0) {
+        link.dataset.target = targetId.replace('-en', '').replace('-ca', '');
+        link.textContent = link.textContent.replace('Biography', 'Biografía')
+                                           .replace('Studies', 'Estudios')
+                                           .replace('Work Experience', 'Experiencia')
+                                           .replace('Recognitions', 'Reconocimientos')
+                                           .replace('Biografia', 'Biografía')
+                                           .replace('Estudis', 'Estudios')
+                                           .replace('Experiència', 'Experiencia')
+                                           .replace('Reconeixements', 'Reconocimientos');
+      } else if (languageIndex === 1) {
+        link.dataset.target = `${targetId.replace('-ca', '')}-en`;
+        link.textContent = link.textContent.replace('Biografía', 'Biography')
+                                           .replace('Estudios', 'Studies')
+                                           .replace('Experiencia', 'Work Experience')
+                                           .replace('Reconocimientos', 'Recognitions')
+                                           .replace('Biografia', 'Biography')
+                                           .replace('Estudis', 'Studies')
+                                           .replace('Experiència', 'Work Experience')
+                                           .replace('Reconeixements', 'Recognitions');
+      } else {
+        link.dataset.target = `${targetId.replace('-en', '')}-ca`;
+        link.textContent = link.textContent.replace('Biografía', 'Biografia')
+                                           .replace('Estudios', 'Estudis')
+                                           .replace('Experiencia', 'Experiència')
+                                           .replace('Reconocimientos', 'Reconeixements')
+                                           .replace('Biography', 'Biografia')
+                                           .replace('Studies', 'Estudis')
+                                           .replace('Work Experience', 'Experiència')
+                                           .replace('Recognitions', 'Reconeixements');
+      }
     });
   };
 
@@ -77,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.section-es').forEach(section => {
     section.style.display = 'block';
   });
-  document.querySelectorAll('.section-en').forEach(section => {
+  document.querySelectorAll('.section-en, .section-ca').forEach(section => {
     section.style.display = 'none';
   });
 
@@ -97,18 +119,22 @@ document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(translateButton);
 
   translateButton.addEventListener('click', () => {
-    isSpanish = translateButton.textContent === 'EN';
-    translateButton.textContent = isSpanish ? 'ES' : 'EN';
+    languageIndex = (languageIndex + 1) % 3;
+    translateButton.textContent = languageIndex === 0 ? 'ES' : languageIndex === 1 ? 'EN' : 'CA';
     document.querySelectorAll('.section-es').forEach(section => {
-      section.classList.toggle('active', !isSpanish);
-      section.style.display = isSpanish ? 'none' : 'block';
+      section.classList.toggle('active', languageIndex === 0);
+      section.style.display = languageIndex === 0 ? 'block' : 'none';
     });
     document.querySelectorAll('.section-en').forEach(section => {
-      section.classList.toggle('active', isSpanish);
-      section.style.display = isSpanish ? 'block' : 'none';
+      section.classList.toggle('active', languageIndex === 1);
+      section.style.display = languageIndex === 1 ? 'block' : 'none';
+    });
+    document.querySelectorAll('.section-ca').forEach(section => {
+      section.classList.toggle('active', languageIndex === 2);
+      section.style.display = languageIndex === 2 ? 'block' : 'none';
     });
     updateMenuLinks();
-    const bioSectionId = isSpanish ? 'bio' : 'bio-en';
+    const bioSectionId = languageIndex === 0 ? 'bio' : languageIndex === 1 ? 'bio-en' : 'bio-ca';
     showSection(bioSectionId);
     updateActiveMenu(bioSectionId);
   });
