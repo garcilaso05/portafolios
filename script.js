@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const menuLinks = document.querySelectorAll('nav a');
   const sections = document.querySelectorAll('.section');
-  const photos = document.querySelectorAll('.photo-gallery img');
+  let isSpanish = true;
 
   const handleCarousels = () => {
     document.querySelectorAll('.carousel').forEach(carousel => {
@@ -15,8 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 5000);
     });
   };
-
-
 
   handleCarousels();
 
@@ -38,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const revealPhotos = () => {
+    const photos = document.querySelectorAll('.photo-gallery img');
     photos.forEach(photo => {
       const rect = photo.getBoundingClientRect();
       if (rect.top < window.innerHeight - 100) {
@@ -46,91 +45,72 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  document.querySelectorAll('.carousel').forEach(carousel => {
-    const images = carousel.querySelectorAll('.carousel-image');
-    let currentIndex = 0;
-  
-    setInterval(() => {
-      // Oculta la imagen actual
-      images[currentIndex].classList.remove('active');
-      // Cambia al siguiente índice
-      currentIndex = (currentIndex + 1) % images.length;
-      // Muestra la nueva imagen con la animación
-      images[currentIndex].classList.add('active');
-    }, 5000); // Cambia de imagen cada 5 segundos
+  const updateMenuLinks = () => {
+    menuLinks.forEach(link => {
+      const targetId = link.dataset.target;
+      link.dataset.target = isSpanish ? targetId.replace('-en', '') : `${targetId}-en`;
+    });
+  };
+
+  const showSection = (targetId) => {
+    sections.forEach(section => {
+      section.classList.remove('active');
+      section.style.display = 'none';
+    });
+    const targetSection = document.getElementById(targetId);
+    if (targetSection) {
+      targetSection.classList.add('active');
+      targetSection.style.display = 'block';
+      triggerTypewriter(targetId);
+    }
+  };
+
+  // Initial translation
+  document.querySelectorAll('.section-es').forEach(section => {
+    section.style.display = 'block';
   });
-
-  document.querySelectorAll('.carousel2').forEach(carousel2 => {
-    const images = carousel2.querySelectorAll('.carousel2-image');
-    let currentIndex = 0;
-  
-    setInterval(() => {
-      // Oculta la imagen actual
-      images[currentIndex].classList.remove('active');
-      // Cambia al siguiente índice
-      currentIndex = (currentIndex + 1) % images.length;
-      // Muestra la nueva imagen con la animación
-      images[currentIndex].classList.add('active');
-    }, 5000); // Cambia de imagen cada 5 segundos
+  document.querySelectorAll('.section-en').forEach(section => {
+    section.style.display = 'none';
   });
-
-
-
-// 2. Partículas Aleatorias (más sutiles)
-function createParticle() {
-  const particle = document.createElement("div");
-  particle.className = "sparkle";
-  document.body.appendChild(particle);
-
-  const size = Math.random() * 5 + 2; // Tamaño más pequeño (2px a 7px)
-  particle.style.width = `${size}px`;
-  particle.style.height = `${size}px`;
-  particle.style.left = `${Math.random() * window.innerWidth}px`;
-  particle.style.top = `${Math.random() * window.innerHeight}px`;
-
-  setTimeout(() => {
-    particle.remove();
-  }, 1200); // Duran menos tiempo (1.2s)
-}
-
-// Generar partículas aleatorias
-setInterval(() => {
-  createParticle();
-}, Math.random() * 400); // Tiempo aleatorio entre 1.5s y 2.5s
-
-
-  
-
-
-
-
-
-  
 
   menuLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetId = e.target.dataset.target;
-      sections.forEach(section => {
-        section.classList.remove('active');
-      });
-      const targetSection = document.getElementById(targetId);
-      if (targetSection) {
-        targetSection.classList.add('active');
-        triggerTypewriter(targetId);
-      }
+      showSection(targetId);
       updateActiveMenu(targetId);
       revealPhotos(); // Revela las fotos de la sección activa
     });
+  });
+
+  const translateButton = document.createElement('button');
+  translateButton.id = 'translateButton';
+  translateButton.textContent = 'ES';
+  document.body.appendChild(translateButton);
+
+  translateButton.addEventListener('click', () => {
+    isSpanish = translateButton.textContent === 'EN';
+    translateButton.textContent = isSpanish ? 'ES' : 'EN';
+    document.querySelectorAll('.section-es').forEach(section => {
+      section.classList.toggle('active', !isSpanish);
+      section.style.display = isSpanish ? 'none' : 'block';
+    });
+    document.querySelectorAll('.section-en').forEach(section => {
+      section.classList.toggle('active', isSpanish);
+      section.style.display = isSpanish ? 'block' : 'none';
+    });
+    updateMenuLinks();
+    const bioSectionId = isSpanish ? 'bio' : 'bio-en';
+    showSection(bioSectionId);
+    updateActiveMenu(bioSectionId);
   });
 
   window.addEventListener('scroll', revealPhotos); // Revela fotos al hacer scroll
   revealPhotos(); // Revela fotos visibles al cargar la página
 
   const defaultSection = 'bio';
-  document.getElementById(defaultSection).classList.add('active');
+  showSection(defaultSection);
   updateActiveMenu(defaultSection);
-  triggerTypewriter(defaultSection);
 });
 
 
