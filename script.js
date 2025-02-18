@@ -49,6 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
     menuLinks.forEach(link => {
       const targetId = link.dataset.target;
       link.dataset.target = isSpanish ? targetId.replace('-en', '') : `${targetId}-en`;
+      link.textContent = isSpanish ? link.textContent.replace('Biography', 'Biografía')
+                                   .replace('Studies', 'Estudios')
+                                   .replace('Work Experience', 'Experiencia')
+                                   .replace('Recognitions', 'Reconocimientos')
+                                 : link.textContent.replace('Biografía', 'Biography')
+                                   .replace('Estudios', 'Studies')
+                                   .replace('Experiencia', 'Work Experience')
+                                   .replace('Reconocimientos', 'Recognitions');
     });
   };
 
