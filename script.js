@@ -14,6 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
         images[currentIndex].classList.add('active');
       }, 5000);
     });
+
+    document.querySelectorAll('.carousel2').forEach(carousel => {
+      const images = carousel.querySelectorAll('.carousel2-image');
+      let currentIndex = 0;
+    
+      setInterval(() => {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+      }, 5000);
+    });
   };
 
   handleCarousels();
