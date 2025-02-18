@@ -56,6 +56,23 @@ Bienvenido/a a mi portafolio web. Aquí encontrarás una muestra de mis estudios
 
 ---
 
+
+## Copiar.sh
+
+Este pequeño archivo shell permite copiar todos los archivos de la carpeta del proyecto (donde se ha clonado el repositorio) a la carpeta `/srv/http`.
+
+Este pequeño atajo está pensado para facilitar el test de la web en localhost con httpd.
+
+## Traducción
+
+Se ha añadido un botón lateral para poder cambiar entre 3 lenguas:
+
+- Castellano
+- Catalán
+- Inglés
+
+Al pulsar se redirige a la sección de biografia.
+
 ## Contacto
 
 Si deseas ponerte en contacto conmigo:
