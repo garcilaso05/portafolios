@@ -25,7 +25,6 @@ nav ul {
   display: flex;
   justify-content: center;
   gap: var(--space-3);
-  overflow: hidden;
 }
 
 nav a {
@@ -61,12 +60,13 @@ nav a.active {
 
 footer {
   text-align: center;
-  padding: 15px;
-  background: rgba(13,17,23,.7);
+  padding: var(--space-4);
+  background: rgba(13,17,23,.55);
   font-size: .9em;
-  color: #7aa0c0;
+  color: var(--muted);
   border-top: 1px solid var(--glass-border);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
 }
 
 /* Bio layout */

@@ -30,3 +30,9 @@ header h1 { animation: glitch 2.8s infinite; }
   50%  { box-shadow: 0 0 22px rgba(97,218,251,.42); }
   100% { box-shadow: 0 0 10px rgba(97,218,251,.65); }
 }
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}

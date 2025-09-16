@@ -1,55 +1,232 @@
-/* Header nav: slider horizontal en móvil */
-@media (max-width: 768px) {
+/* Header nav: modo horizontal scrollable con espacio para glow */
+@media (max-width: 980px) {
   nav ul {
-    flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; padding-bottom: 10px; scrollbar-width: none;
+    /* mantener horizontal scrollable como antes */
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    overflow-x: auto;
+    overflow-y: visible;     /* permitir que el glow se vea verticalmente */
+    white-space: nowrap;
+    padding: 15px 10px 20px;    /* más padding vertical para el glow */
+    scroll-behavior: smooth;
   }
+  
+  /* ocultar scrollbar pero mantener funcionalidad */
   nav ul::-webkit-scrollbar { display: none; }
+
   nav li { flex: 0 0 auto; }
-  nav a { display: inline-block; padding: 10px 15px; }
+  nav a { 
+    display: inline-block;
+    padding: 12px 16px;
+    margin: 8px 4px;          /* más margen vertical y lateral para el glow */
+    white-space: nowrap;
+  }
+  
+  /* Asegurar que el header tenga altura suficiente */
+  header {
+    padding-bottom: 25px;
+  }
 }
 
 /* Bio */
-@media (max-width: 768px) {
+@media (max-width: 980px) {
   .bio-container { flex-direction: column; text-align: center; }
   .bio-image { max-width: 80%; }
 }
 
+/* Bio redesign responsive */
+@media (max-width: 980px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .profile-photo {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .floating-elements div {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .hero-name {
+    font-size: 2.4rem;  /* Adjusted for mobile */
+  }
+  
+  .hero-greeting {
+    font-size: 2rem;  /* Adjusted for mobile */
+  }
+  
+  .hero-role {
+    font-size: 1.3rem;  /* Adjusted for mobile */
+  }
+  
+  .philosophy-section {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .bio-sections {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 25px;
+  }
+  
+  .hero-stats {
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .profile-photo {
+    width: 180px;
+    height: 180px;
+  }
+}
+
 /* Estudios y carousels */
-@media (max-width: 768px) {
+@media (max-width: 1300px) {
   .study-card { flex-direction: column; text-align: center; }
   .carousel { width: 100%; aspect-ratio: 16/9; }
   .carousel2 { width: 100%; aspect-ratio: 3/4; }
   .study-content { margin-top: 15px; }
 }
 
-/* Botones en móvil */
-@media (max-width: 768px) {
+/* Reconocimientos: layout vertical en móvil */
+@media (max-width: 980px) {
+  .recognition-item {
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .recognition-item .carousel {
+    width: 90% !important;
+    height: auto !important;
+    aspect-ratio: 1/1 !important;
+    max-width: 300px !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+  }
+  
+  .recognition-content {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .recognition-content .buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .recognition-content .btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    min-width: 140px;
+  }
+}
+
+/* Botones en "vertical" */
+@media (max-width: 980px) {
   .study-card { text-align: center; }
   .buttons { justify-content: center; gap: 15px; margin-top: 10px; }
   .btn { width: 100%; max-width: 220px; }
 }
 
-/* Reconocimientos: una columna en móvil */
-@media (max-width: 768px) {
-  .recognition-grid { grid-template-columns: 1fr; }
-  .recognition-item { flex-direction: column; align-items: center; text-align: center; }
-  .recognition-item .carousel { width: 80%; margin: 0 auto 15px; }
-  .recognition-content { text-align: center; }
-  .recognition-content .buttons { justify-content: center; gap: 15px; }
-  .btn { width: auto; padding: 10px 20px; text-align: center; }
-}
-
-/* Social layout en móvil */
-@media (max-width: 768px) {
+/* Social layout en "vertical" */
+@media (max-width: 980px) {
   .social-container { flex-direction: column; align-items: center; }
   .social-link { width: 80%; }
 }
 
-/* Experiencia en landscape */
+/* Experiencia en landscape (sin cambios) */
 @media (orientation: landscape) and (min-width: 768px) {
   .job-block { display: flex; flex-direction: column; align-items: center; gap: 20px; }
   .job-title { width: 100%; text-align: center; margin-bottom: 10px; }
   .job-content { display: flex; align-items: center; gap: 20px; width: 100%; }
   .gallery { flex: 1; margin: 0; }
   .job-description { flex: 1; margin: 0; }
+}
+
+/* Bio cards responsive grid control */
+@media (max-width: 1400px) {
+  .bio-sections {
+    grid-template-columns: repeat(2, 1fr);  /* 2x2 grid */
+  }
+}
+
+@media (max-width: 980px) {
+  .bio-sections {
+    grid-template-columns: 1fr;  /* 1x4 vertical */
+    gap: 20px;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  
+  .profile-photo {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .floating-elements div {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .hero-name {
+    font-size: 2.4rem;  /* Adjusted for mobile */
+  }
+  
+  .hero-greeting {
+    font-size: 2rem;  /* Adjusted for mobile */
+  }
+  
+  .hero-role {
+    font-size: 1.3rem;  /* Adjusted for mobile */
+  }
+  
+  .philosophy-section {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .bio-sections {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 25px;
+  }
+  
+  .hero-stats {
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .profile-photo {
+    width: 180px;
+    height: 180px;
+  }
 }
