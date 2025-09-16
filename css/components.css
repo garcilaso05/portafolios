@@ -1,0 +1,134 @@
+/* Efectos utilitarios */
+.zoom-image { transition: transform .3s ease; }
+.zoom-image:hover { transform: scale(1.04); }
+.inline-gif { width: 90px; height: auto; margin-top: 10px; border-radius: 10px; }
+
+/* Social */
+.social-container {
+  display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin-top: 20px;
+}
+.social-link {
+  display: flex; align-items: center;
+  color: var(--text);
+  background: var(--glass-bg);
+  padding: 10px 12px; border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.social-link:hover { transform: translateY(-2px) scale(1.02); box-shadow: var(--neon); background: rgba(0,209,255,.06); }
+.social-icon { width: 50px; height: 50px; border-radius: 8px; margin-right: 10px; }
+.social-link span { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+
+/* Cards (Estudios, Reconocimientos, Experiencia) */
+.study-card,
+.recognition-item,
+.job-block {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  position: relative;
+}
+
+.study-card { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
+
+/* Carousels */
+.carousel, .carousel2 {
+  width: 100%; overflow: hidden; position: relative; margin: 0 auto 20px; border-radius: var(--radius);
+  box-shadow: 0 6px 14px rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.06);
+}
+.carousel { max-width: 600px; aspect-ratio: 16/9; }
+.carousel2 { max-width: 500px; aspect-ratio: 3/4; }
+
+.carousel-image, .carousel2-image {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity .8s ease-in-out;
+}
+.carousel-image.active, .carousel2-image.active { opacity: 1; }
+
+/* Contenido textual */
+.study-content { flex: 2; color: var(--text); }
+.study-content p { margin: 0 0 10px; line-height: 1.7; }
+
+/* Reconocimientos */
+.recognition-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.recognition-item { display: flex; flex-direction: row; align-items: flex-start; }
+.recognition-item .carousel { width: 60%; aspect-ratio: 1/1; margin-right: 15px; }
+.recognition-content { flex-grow: 1; }
+.recognition-item .carousel-image { width: 100%; height: 100%; }
+
+/* Botones */
+.buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 16px; font-weight: 700; border-radius: 10px;
+  color: #0d1117; background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  border: 0; box-shadow: 0 8px 18px rgba(0,209,255,.2), 0 0 0 1px rgba(255,255,255,.08) inset;
+  transition: transform .2s ease, box-shadow .25s ease, filter .2s ease, background .25s ease;
+}
+.btn:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 10px 22px rgba(0,209,255,.28), 0 0 0 1px rgba(255,255,255,.1) inset;
+  filter: saturate(1.05);
+}
+.recognition-content .buttons { justify-content: center; align-items: center; gap: 10px; margin-top: 15px; }
+
+/* Typewriter */
+.typewriter { display: inline-block; overflow: hidden; white-space: nowrap; animation: typing 3s steps(50,end), blink .7s step-end 8; max-width: 100%; }
+
+/* Glitch sutil para h1 (está animado en animations.css) */
+
+/* Partículas */
+.sparkle {
+  position: absolute; background-color: rgba(255,255,255,.18);
+  border-radius: 50%; box-shadow: 0 0 15px rgba(255,255,255,.28), 0 0 30px rgba(255,255,255,.08);
+  animation: sparkleAnimation 1.2s ease-out forwards;
+}
+
+/* Galería manual (Experiencia) */
+.gallery { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px 0; }
+.gallery-container { width: 100%; max-width: 462px; height: 577.5px; position: relative; overflow: hidden; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.06); }
+.gallery-image { display: none; width: 100%; height: 100%; object-fit: cover; }
+.gallery-image.active { display: block; }
+.gallery-btn {
+  background: linear-gradient(180deg, var(--accent-2), var(--accent)); color: #10141f;
+  border: none; padding: 10px 20px; font-size: 1.5rem; cursor: pointer; border-radius: 50%;
+  transition: transform .2s ease, box-shadow .25s ease; box-shadow: 0 10px 20px rgba(0,209,255,.25);
+}
+.gallery-btn:hover { transform: scale(1.1); box-shadow: 0 12px 24px rgba(0,209,255,.32); }
+
+/* Descripción del trabajo */
+.job-title { font-size: 1.8rem; color: var(--primary); text-align: center; margin-bottom: 15px; }
+.job-description p { color: var(--text); margin: 10px 0; line-height: 1.7; }
+
+/* Botón flotante de traducción */
+#translateButton {
+  position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  color: #10141f; border: none; border-radius: 50%; font-size: 1.5rem; cursor: pointer;
+  display: flex; justify-content: center; align-items: center;
+  box-shadow: 0 10px 22px rgba(0,209,255,.28), 0 0 0 1px rgba(255,255,255,.08) inset;
+  transition: transform .2s ease, box-shadow .25s ease, filter .2s ease;
+}
+#translateButton:hover { transform: scale(1.08); box-shadow: 0 12px 28px rgba(0,209,255,.34); }
+
+/* Descarga CV */
+.download-cv { text-align: center; margin: 40px 0; }
+.download-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  color: #10141f; padding: 15px 50px; font-size: 1.2rem; border-radius: var(--radius);
+  font-weight: 800; transition: transform .2s ease, box-shadow .25s ease; animation: pulse 1.8s infinite;
+  box-shadow: 0 12px 28px rgba(0,209,255,.28);
+}
+.download-btn:hover { transform: translateY(-2px) scale(1.04); }
+
+/* Acentos de strong */
+.recognition-content p strong { font-weight: 800; color: #00ffff; }

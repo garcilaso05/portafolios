@@ -1,0 +1,36 @@
+:root {
+  /* Color system */
+  --bg-1: #0a0f1f;
+  --bg-2: #0f162b;
+  --bg-3: #0a0f1f;
+  --text: #e8f1ff;
+  --muted: #9fb3c8;
+
+  --primary: #61dafb;   /* Azul React */
+  --accent: #00d1ff;    /* Cian neon */
+  --accent-2: #7ae8ff;  /* Cian claro */
+
+  /* Surfaces - liquid glass */
+  --glass-bg: rgba(13, 17, 23, 0.55);
+  --glass-border: rgba(97, 218, 251, 0.22);
+  --glass-inner: rgba(0, 209, 255, 0.25);
+  --glass-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 40px rgba(0, 209, 255, 0.12);
+
+  /* Effects */
+  --neon: 0 0 8px rgba(0,209,255,.55), 0 0 18px rgba(0,209,255,.28);
+  --ring: 0 0 0 1px var(--glass-border) inset, 0 0 18px var(--glass-inner) inset;
+
+  /* Radii, blur, spacing */
+  --radius: 14px;
+  --radius-sm: 10px;
+  --radius-lg: 18px;
+  --blur: 12px;
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 28px;
+
+  /* Background gradient */
+  --bg-gradient: linear-gradient(120deg, var(--bg-1), var(--bg-2), var(--bg-3));
+}

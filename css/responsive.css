@@ -1,0 +1,55 @@
+/* Header nav: slider horizontal en móvil */
+@media (max-width: 768px) {
+  nav ul {
+    flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; padding-bottom: 10px; scrollbar-width: none;
+  }
+  nav ul::-webkit-scrollbar { display: none; }
+  nav li { flex: 0 0 auto; }
+  nav a { display: inline-block; padding: 10px 15px; }
+}
+
+/* Bio */
+@media (max-width: 768px) {
+  .bio-container { flex-direction: column; text-align: center; }
+  .bio-image { max-width: 80%; }
+}
+
+/* Estudios y carousels */
+@media (max-width: 768px) {
+  .study-card { flex-direction: column; text-align: center; }
+  .carousel { width: 100%; aspect-ratio: 16/9; }
+  .carousel2 { width: 100%; aspect-ratio: 3/4; }
+  .study-content { margin-top: 15px; }
+}
+
+/* Botones en móvil */
+@media (max-width: 768px) {
+  .study-card { text-align: center; }
+  .buttons { justify-content: center; gap: 15px; margin-top: 10px; }
+  .btn { width: 100%; max-width: 220px; }
+}
+
+/* Reconocimientos: una columna en móvil */
+@media (max-width: 768px) {
+  .recognition-grid { grid-template-columns: 1fr; }
+  .recognition-item { flex-direction: column; align-items: center; text-align: center; }
+  .recognition-item .carousel { width: 80%; margin: 0 auto 15px; }
+  .recognition-content { text-align: center; }
+  .recognition-content .buttons { justify-content: center; gap: 15px; }
+  .btn { width: auto; padding: 10px 20px; text-align: center; }
+}
+
+/* Social layout en móvil */
+@media (max-width: 768px) {
+  .social-container { flex-direction: column; align-items: center; }
+  .social-link { width: 80%; }
+}
+
+/* Experiencia en landscape */
+@media (orientation: landscape) and (min-width: 768px) {
+  .job-block { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .job-title { width: 100%; text-align: center; margin-bottom: 10px; }
+  .job-content { display: flex; align-items: center; gap: 20px; width: 100%; }
+  .gallery { flex: 1; margin: 0; }
+  .job-description { flex: 1; margin: 0; }
+}

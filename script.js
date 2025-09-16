@@ -1,13 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
   const menuLinks = document.querySelectorAll('nav a');
-  const sections = document.querySelectorAll('.section');
-  let languageIndex = 0; // 0: Spanish, 1: English, 2: Catalan
+  const content = document.getElementById('content');
+
+  // 0: ES, 1: EN, 2: CA
+  let languageIndex = 0;
+  const languages = ['es', 'en', 'ca'];
+  const routes = ['bio', 'studies', 'experience', 'recognitions'];
+
+  // Persist language and last route in URL hash and localStorage
+  const getInitialState = () => {
+    const hash = window.location.hash.replace('#', '');
+    const params = new URLSearchParams(hash);
+    const langParam = params.get('lang');
+    const routeParam = params.get('route');
+
+    const storedLang = localStorage.getItem('lang');
+    const storedRoute = localStorage.getItem('route');
+
+    const lang = langParam || storedLang || 'es';
+    const route = routeParam || storedRoute || 'bio';
+
+    languageIndex = Math.max(0, languages.indexOf(lang));
+    return { lang, route };
+  };
+
+  const setHash = (lang, route) => {
+    const params = new URLSearchParams();
+    params.set('lang', lang);
+    params.set('route', route);
+    window.location.hash = params.toString();
+  };
+
+  const updateActiveMenu = (route) => {
+    menuLinks.forEach(link => link.classList.remove('active'));
+    const active = document.querySelector(`nav a[data-route="${route}"]`);
+    if (active) active.classList.add('active');
+  };
+
+  const triggerTypewriter = () => {
+    const typewriterTitle = content.querySelector('.typewriter');
+    if (!typewriterTitle) return;
+    typewriterTitle.style.animation = 'none';
+    // Force reflow then restore
+    void typewriterTitle.offsetWidth;
+    typewriterTitle.style.animation = '';
+  };
 
   const handleCarousels = () => {
+    // Primary carousels
     document.querySelectorAll('.carousel').forEach(carousel => {
       const images = carousel.querySelectorAll('.carousel-image');
+      if (!images.length) return;
       let currentIndex = 0;
-    
+      images[0].classList.add('active');
       setInterval(() => {
         images[currentIndex].classList.remove('active');
         currentIndex = (currentIndex + 1) % images.length;
@@ -15,35 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 5000);
     });
 
+    // Secondary/tall carousels
     document.querySelectorAll('.carousel2').forEach(carousel => {
       const images = carousel.querySelectorAll('.carousel2-image');
+      if (!images.length) return;
       let currentIndex = 0;
-    
+      images[0].classList.add('active');
       setInterval(() => {
         images[currentIndex].classList.remove('active');
         currentIndex = (currentIndex + 1) % images.length;
         images[currentIndex].classList.add('active');
       }, 5000);
     });
-  };
-
-  handleCarousels();
-
-  const updateActiveMenu = (targetId) => {
-    menuLinks.forEach(link => {
-      link.classList.remove('active');
-    });
-    const activeLink = document.querySelector(`nav a[data-target="${targetId}"]`);
-    if (activeLink) activeLink.classList.add('active');
-  };
-
-  const triggerTypewriter = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    const typewriterTitle = section.querySelector('.typewriter');
-    typewriterTitle.style.animation = 'none'; // Reinicia la animación
-    setTimeout(() => {
-      typewriterTitle.style.animation = ''; // Reanuda la animación
-    }, 10);
   };
 
   const revealPhotos = () => {
@@ -51,130 +79,107 @@ document.addEventListener('DOMContentLoaded', () => {
     photos.forEach(photo => {
       const rect = photo.getBoundingClientRect();
       if (rect.top < window.innerHeight - 100) {
-        photo.classList.add('visible'); // Añade la clase para hacer visibles las fotos
+        photo.classList.add('visible');
       }
     });
   };
 
-  const updateMenuLinks = () => {
-    menuLinks.forEach(link => {
-      const targetId = link.dataset.target;
-      if (languageIndex === 0) {
-        link.dataset.target = targetId.replace('-en', '').replace('-ca', '');
-        link.textContent = link.textContent.replace('Biography', 'Biografía')
-                                           .replace('Studies', 'Estudios')
-                                           .replace('Work Experience', 'Experiencia')
-                                           .replace('Recognitions', 'Reconocimientos')
-                                           .replace('Biografia', 'Biografía')
-                                           .replace('Estudis', 'Estudios')
-                                           .replace('Experiència', 'Experiencia')
-                                           .replace('Reconeixements', 'Reconocimientos');
-      } else if (languageIndex === 1) {
-        link.dataset.target = `${targetId.replace('-ca', '')}-en`;
-        link.textContent = link.textContent.replace('Biografía', 'Biography')
-                                           .replace('Estudios', 'Studies')
-                                           .replace('Experiencia', 'Work Experience')
-                                           .replace('Reconocimientos', 'Recognitions')
-                                           .replace('Biografia', 'Biography')
-                                           .replace('Estudis', 'Studies')
-                                           .replace('Experiència', 'Work Experience')
-                                           .replace('Reconeixements', 'Recognitions');
-      } else {
-        link.dataset.target = `${targetId.replace('-en', '')}-ca`;
-        link.textContent = link.textContent.replace('Biografía', 'Biografia')
-                                           .replace('Estudios', 'Estudis')
-                                           .replace('Experiencia', 'Experiència')
-                                           .replace('Reconocimientos', 'Reconeixements')
-                                           .replace('Biography', 'Biografia')
-                                           .replace('Studies', 'Estudis')
-                                           .replace('Work Experience', 'Experiència')
-                                           .replace('Recognitions', 'Reconeixements');
-      }
+  const translateLabels = () => {
+    const labels = {
+      es: ['Biografía', 'Estudios', 'Experiencia', 'Reconocimientos'],
+      en: ['Biography', 'Studies', 'Work Experience', 'Recognitions'],
+      ca: ['Biografia', 'Estudis', 'Experiència', 'Reconeixements']
+    };
+    const lang = languages[languageIndex];
+    menuLinks.forEach((link, i) => {
+      const route = link.dataset.route;
+      const idx = Math.max(0, routes.indexOf(route));
+      if (labels[lang] && labels[lang][idx]) link.textContent = labels[lang][idx];
     });
+    // Update document language and translate button labels
+    document.documentElement.lang = lang;
+    translateButton.textContent = lang.toUpperCase();
+    const btnTitles = {
+      es: 'Cambiar idioma',
+      en: 'Change language',
+      ca: 'Canviar idioma'
+    };
+    const title = btnTitles[lang] || 'Change language';
+    translateButton.setAttribute('aria-label', title);
+    translateButton.setAttribute('title', title);
   };
 
-  const showSection = (targetId) => {
-    sections.forEach(section => {
-      section.classList.remove('active');
-      section.style.display = 'none';
-    });
-    const targetSection = document.getElementById(targetId);
-    if (targetSection) {
-      targetSection.classList.add('active');
-      targetSection.style.display = 'block';
-      triggerTypewriter(targetId);
+  const loadRoute = async (route) => {
+    const lang = languages[languageIndex];
+    try {
+      const res = await fetch(`pages/${lang}/${route}.html`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`No se pudo cargar ${route} (${lang})`);
+      const html = await res.text();
+      content.innerHTML = html;
+      triggerTypewriter();
+      handleCarousels();
+      revealPhotos();
+      updateActiveMenu(route);
+      localStorage.setItem('lang', lang);
+      localStorage.setItem('route', route);
+      setHash(lang, route);
+    } catch (e) {
+      content.innerHTML = `<p style="color:#f88">Error cargando contenido: ${e.message}</p>`;
+      // Fallback: try ES bio
+      if (route !== 'bio' || languages[languageIndex] !== 'es') {
+        languageIndex = 0;
+        loadRoute('bio');
+      }
     }
   };
 
-  // Initial translation
-  document.querySelectorAll('.section-es').forEach(section => {
-    section.style.display = 'block';
-  });
-  document.querySelectorAll('.section-en, .section-ca').forEach(section => {
-    section.style.display = 'none';
-  });
-
+  // Menu navigation
   menuLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const targetId = e.target.dataset.target;
-      showSection(targetId);
-      updateActiveMenu(targetId);
-      revealPhotos(); // Revela las fotos de la sección activa
+      const route = link.dataset.route;
+      loadRoute(route);
     });
   });
 
+  // Translate button
   const translateButton = document.createElement('button');
   translateButton.id = 'translateButton';
-  translateButton.textContent = 'ES';
   document.body.appendChild(translateButton);
-
   translateButton.addEventListener('click', () => {
-    languageIndex = (languageIndex + 1) % 3;
-    translateButton.textContent = languageIndex === 0 ? 'ES' : languageIndex === 1 ? 'EN' : 'CA';
-    document.querySelectorAll('.section-es').forEach(section => {
-      section.classList.toggle('active', languageIndex === 0);
-      section.style.display = languageIndex === 0 ? 'block' : 'none';
-    });
-    document.querySelectorAll('.section-en').forEach(section => {
-      section.classList.toggle('active', languageIndex === 1);
-      section.style.display = languageIndex === 1 ? 'block' : 'none';
-    });
-    document.querySelectorAll('.section-ca').forEach(section => {
-      section.classList.toggle('active', languageIndex === 2);
-      section.style.display = languageIndex === 2 ? 'block' : 'none';
-    });
-    updateMenuLinks();
-    const bioSectionId = languageIndex === 0 ? 'bio' : languageIndex === 1 ? 'bio-en' : 'bio-ca';
-    showSection(bioSectionId);
-    updateActiveMenu(bioSectionId);
+    languageIndex = (languageIndex + 1) % languages.length;
+    translateLabels();
+    // Reload current route in new language
+    const current = document.querySelector('nav a.active')?.dataset.route || 'bio';
+    loadRoute(current);
   });
 
-  window.addEventListener('scroll', revealPhotos); // Revela fotos al hacer scroll
-  revealPhotos(); // Revela fotos visibles al cargar la página
-
-  const defaultSection = 'bio';
-  showSection(defaultSection);
-  updateActiveMenu(defaultSection);
+  // Init
+  window.addEventListener('scroll', revealPhotos);
+  const initial = getInitialState();
+  translateLabels();
+  loadRoute(initial.route);
 });
 
-
+// Legacy helpers kept in case future manual galleries are used
 function nextImage(button) {
   const galleryContainer = button.parentElement.querySelector('.gallery-container');
+  if (!galleryContainer) return;
   const images = galleryContainer.querySelectorAll('.gallery-image');
+  if (!images.length) return;
   let activeIndex = Array.from(images).findIndex(image => image.classList.contains('active'));
-  
   images[activeIndex].classList.remove('active');
-  activeIndex = (activeIndex + 1) % images.length; // Siguiente imagen
+  activeIndex = (activeIndex + 1) % images.length;
   images[activeIndex].classList.add('active');
 }
 
 function prevImage(button) {
   const galleryContainer = button.parentElement.querySelector('.gallery-container');
+  if (!galleryContainer) return;
   const images = galleryContainer.querySelectorAll('.gallery-image');
+  if (!images.length) return;
   let activeIndex = Array.from(images).findIndex(image => image.classList.contains('active'));
-  
   images[activeIndex].classList.remove('active');
-  activeIndex = (activeIndex - 1 + images.length) % images.length; // Imagen anterior
+  activeIndex = (activeIndex - 1 + images.length) % images.length;
   images[activeIndex].classList.add('active');
 }

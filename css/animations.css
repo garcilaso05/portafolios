@@ -1,0 +1,32 @@
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes typing { from { width: 0; } to { width: 100%; } }
+@keyframes blink { 100% { border-right-color: transparent; } }
+
+/* Glitch más elegante */
+header h1 { animation: glitch 2.8s infinite; }
+@keyframes glitch {
+  0%   { text-shadow: 1px 1px 0 rgba(0,255,255,.35), -1px -1px 0 rgba(0,145,255,.28); }
+  25%  { text-shadow: -1px -1px 0 rgba(0,85,255,.35), 1px 1px 0 rgba(60,0,255,.25); }
+  50%  { text-shadow: 1px -1px 0 rgba(0,255,251,.35), -1px 1px 0 rgba(89,0,255,.25); }
+  75%  { text-shadow: -1px 1px 0 rgba(47,0,255,.32), 1px -1px 0 rgba(0,255,255,.28); }
+  100% { text-shadow: 1px 1px 0 rgba(88,27,255,.32), -1px -1px 0 rgba(0,87,106,.32); }
+}
+
+/* Partículas sutiles */
+@keyframes sparkleAnimation {
+  0%   { opacity: 0; transform: scale(0); }
+  50%  { opacity: .55; transform: scale(1.15); }
+  100% { opacity: 0; transform: scale(.85); }
+}
+
+/* Botones y CTA */
+@keyframes pulse {
+  0%   { box-shadow: 0 0 10px rgba(97,218,251,.65); }
+  50%  { box-shadow: 0 0 22px rgba(97,218,251,.42); }
+  100% { box-shadow: 0 0 10px rgba(97,218,251,.65); }
+}

@@ -1,13 +1,13 @@
-/* Global Styles */
-body {
-  font-family: 'Roboto', sans-serif;
-  color: #f5f5f5;
-  margin: 0;
-  background: linear-gradient(120deg, #10141f, #1e2433, #10141f);
-  background-size: 300% 300%;
-  animation: moveGradient 10s ease infinite;
-}
+/* Modular CSS: import order matters (tokens -> base -> layout -> components -> animations -> responsive -> utilities) */
+@import url("./css/variables.css");
+@import url("./css/base.css");
+@import url("./css/layout.css");
+@import url("./css/components.css");
+@import url("./css/animations.css");
+@import url("./css/responsive.css");
+@import url("./css/utilities.css");
 
+/* Nota: Todo el CSS anterior fue movido a estos módulos para facilitar el mantenimiento. */
 @keyframes moveGradient {
   0% {
     background-position: 0% 50%;
@@ -747,3 +747,10 @@ footer {
   font-size: 0.9em;
   color: #777;
 }
+
+/* New: styles previously inline */
+.texto-destacado { font-size: 1.2em; }
+.indent { padding-left: 2em; }
+
+/* Ensure loaded content spacing matches sections */
+main#content { display: block; padding: 20px 30px; }

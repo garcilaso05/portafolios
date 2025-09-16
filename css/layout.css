@@ -1,0 +1,76 @@
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: var(--space-4);
+  text-align: center;
+  background: linear-gradient(180deg, rgba(13,17,23,.75), rgba(13,17,23,.45));
+  border-bottom: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  box-shadow: var(--glass-shadow);
+}
+
+header h1 {
+  color: var(--primary);
+  text-shadow: 0 0 6px rgba(97,218,251,.6), 0 0 14px rgba(0,209,255,.45);
+  font-size: 2.4rem;
+  position: relative;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-2) 0 0;
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  overflow: hidden;
+}
+
+nav a {
+  display: inline-block;
+  color: var(--text);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.06);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+}
+
+nav a:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--neon);
+  background: linear-gradient(180deg, rgba(0,209,255,.08), rgba(255,255,255,.03));
+}
+
+nav a.active {
+  color: var(--accent-2);
+  box-shadow: var(--neon);
+  border-color: var(--glass-border);
+}
+
+.section {
+  display: none;
+  padding: 20px 30px;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.section.active { display: block; opacity: 1; transform: translateY(0); }
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background: rgba(13,17,23,.7);
+  font-size: .9em;
+  color: #7aa0c0;
+  border-top: 1px solid var(--glass-border);
+  backdrop-filter: blur(6px);
+}
+
+/* Bio layout */
+.bio-container { display: flex; align-items: center; gap: 20px; }
+.bio-image { width: 100%; max-width: 350px; height: auto; border-radius: var(--radius); }
+.bio-text p { margin-bottom: 15px; line-height: 1.7; color: var(--text); }
+.bio-text strong { color: var(--primary); }

@@ -52,7 +52,16 @@ Bienvenido/a a mi portafolio web. Aquí encontrarás una muestra de mis estudios
 
 2. **Abre el archivo `index.html`**:
 
-   Puedes abrirlo directamente en cualquier navegador moderno o usar una extensión para servidor local.
+   Este proyecto ahora está modularizado: cada pestaña (Bio, Estudios, Experiencia, Reconocimientos) se carga dinámicamente desde archivos HTML parciales en `pages/<idioma>/<seccion>.html`.
+
+   Debido a que el contenido se carga con `fetch`, es recomendable usar un servidor estático local (algunos navegadores bloquean `file://` + fetch):
+
+   - Opción rápida con Python 3:
+     - Ejecuta en la carpeta del proyecto: `python3 -m http.server 8080`
+     - Abre en el navegador: `http://localhost:8080`
+   - O usa la extensión “Live Server” de VS Code.
+
+   La URL mantiene el idioma y la ruta actual en el hash, por ejemplo: `#lang=es&route=bio`.
 
 ---
 
@@ -71,7 +80,7 @@ Se ha añadido un botón lateral para poder cambiar entre 3 lenguas:
 - Catalán
 - Inglés
 
-Al pulsar se redirige a la sección de biografia.
+El idioma actual también se refleja en el botón (ES/EN/CA) y en el atributo `lang` del documento. Al cambiar de idioma se recarga la ruta actual en el nuevo idioma.
 
 ## Contacto
 
