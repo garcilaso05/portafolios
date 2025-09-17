@@ -36,3 +36,66 @@ header h1 { animation: glitch 2.8s infinite; }
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
 }
+
+/* Studies Timeline Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-decoration {
+  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+  50% { transform: translateY(-10px) scale(1.1); opacity: 0.8; }
+}
+
+/* Subtle interactive animations */
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(0,209,255,0.3);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(0,209,255,0.6);
+  }
+}
+
+/* Add shimmer effect to highlight items - fixed positioning */
+.highlight-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;  /* Start from left edge */
+  width: 100%;  /* Match item width */
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+  pointer-events: none;  /* Don't interfere with clicks */
+}
+
+.highlight-item:hover::before {
+  left: 100%;  /* Move to right edge */
+}
+
+/* Staggered animation for achievement badges */
+.achievement-badge:nth-child(1) { animation-delay: 0.1s; }
+.achievement-badge:nth-child(2) { animation-delay: 0.2s; }
+.achievement-badge:nth-child(3) { animation-delay: 0.3s; }
+.achievement-badge:nth-child(4) { animation-delay: 0.4s; }
+.achievement-badge:nth-child(5) { animation-delay: 0.5s; }
+.achievement-badge:nth-child(6) { animation-delay: 0.6s; }
+.achievement-badge:nth-child(7) { animation-delay: 0.7s; }
