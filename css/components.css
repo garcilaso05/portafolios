@@ -497,7 +497,7 @@
 /* Studies Section - Redesigned */
 .studies-timeline {
   position: relative;
-  padding: 40px 0 20px 0;  /* Add top padding to separate from title */
+  padding: 20px 0 20px 0;  /* Reduced top padding from 40px to 20px */
 }
 
 /* Timeline line removed - caused visual issues */
@@ -810,4 +810,17 @@
   padding-left: 1.5rem;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+/* Language and mobility card specific styles */
+.bio-card a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.bio-card a:hover {
+  color: var(--primary);
+  text-shadow: 0 0 8px rgba(0,209,255,0.4);
 }

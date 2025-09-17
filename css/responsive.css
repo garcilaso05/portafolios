@@ -34,7 +34,7 @@
 }
 
 /* Bio cards responsive grid control */
-@media (max-width: 1400px) {
+@media (max-width: 1000px) {
   .bio-sections {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -58,8 +58,8 @@
   }
 }
 
-/* Bio redesign responsive - Mobile and tablet */
-@media (max-width: 980px) {
+/* Bio redesign responsive - Keep horizontal layout longer, only vertical on true mobile */
+@media (max-width: 680px) {  /* Changed from 980px to 680px */
   .bio-container { flex-direction: column; text-align: center; }
   .bio-image { max-width: 80%; }
   
@@ -102,8 +102,40 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
+}
+
+/* Tablet adjustments - keep horizontal hero layout */
+@media (min-width: 681px) and (max-width: 980px) {
+  .hero-content {
+    gap: 30px;  /* Keep horizontal but reduce gap */
+  }
   
-  /* Reconocimientos: layout vertical en móvil */
+  .profile-photo {
+    width: 240px;  /* Slightly smaller on tablets */
+    height: 240px;
+  }
+  
+  .hero-name {
+    font-size: 2.8rem;  /* Slightly smaller but still large */
+  }
+  
+  .hero-greeting {
+    font-size: 2.2rem;
+  }
+  
+  .hero-role {
+    font-size: 1.4rem;
+  }
+  
+  /* Keep recognition items horizontal on tablets too */
+  .recognition-item {
+    flex-direction: row !important;
+    gap: 25px;
+  }
+}
+
+/* True mobile - vertical layout for recognition items */
+@media (max-width: 680px) {  /* Changed from nested to separate rule */
   .recognition-item {
     flex-direction: column !important;
     align-items: center;
@@ -213,8 +245,10 @@
   .bio-sections {
     grid-template-columns: repeat(2, 1fr);  /* 2x2 grid */
   }
+}
 
-  
+/* Only go to single column on true mobile */
+@media (max-width: 680px) {  /* Changed from 1400px to 680px */
   .hero-name {
     font-size: 2.4rem;  /* Adjusted for mobile */
   }
