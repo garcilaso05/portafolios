@@ -1,0 +1,10 @@
+[
+  {
+    "repo": "clientservidorxarxes",
+    "position": 1,
+    "customTitle": "Cliente-Servidor en C",
+    "customDescription": "Proyecto académico centrado en comunicación por sockets en C para arquitecturas cliente-servidor",
+    "image": "images/client-server.png",
+    "extraLinks": []
+  }
+]

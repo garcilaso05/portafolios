@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 0: ES, 1: EN, 2: CA
   let languageIndex = 0;
   const languages = ['es', 'en', 'ca'];
-  const routes = ['bio', 'studies', 'experience', 'recognitions'];
+  const routes = ['bio', 'studies', 'experience', 'recognitions', 'repos'];
 
   // Persist language and last route in URL hash and localStorage
   const getInitialState = () => {
@@ -86,9 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const translateLabels = () => {
     const labels = {
-      es: ['Biografía', 'Estudios', 'Experiencia', 'Reconocimientos'],
-      en: ['Biography', 'Studies', 'Work Experience', 'Recognitions'],
-      ca: ['Biografia', 'Estudis', 'Experiència', 'Reconeixements']
+      es: ['Biografía', 'Estudios', 'Experiencia', 'Reconocimientos', 'Repositorios'],
+      en: ['Biography', 'Studies', 'Work Experience', 'Recognitions', 'Repositories'],
+      ca: ['Biografia', 'Estudis', 'Experiència', 'Reconeixements', 'Repositoris']
     };
     const lang = languages[languageIndex];
     menuLinks.forEach((link, i) => {
@@ -120,6 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
       handleCarousels();
       revealPhotos();
       updateActiveMenu(route);
+      
+      // Ejecutar módulo de repos si estamos en esa ruta
+      if (route === 'repos' && typeof window.initReposModule === 'function') {
+        console.log('🔧 Initializing repos module...');
+        // Pequeño delay para asegurar que el DOM está listo
+        setTimeout(() => {
+          window.initReposModule();
+        }, 50);
+      }
+      
       localStorage.setItem('lang', lang);
       localStorage.setItem('route', route);
       setHash(lang, route);
