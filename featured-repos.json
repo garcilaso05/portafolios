@@ -1,10 +1,34 @@
 [
   {
-    "repo": "clientservidorxarxes",
+    "repo": "justHackMe",
     "position": 1,
-    "customTitle": "Cliente-Servidor en C",
-    "customDescription": "Proyecto académico centrado en comunicación por sockets en C para arquitecturas cliente-servidor",
-    "image": "images/client-server.png",
+    "customTitle": "justHackMe",
+    "customDescription": "Actividad interactiva para estudiantes de bachillerato que permite familiarizarse de manera divertida con una terminal de Linux, aprendiendo comandos de forma educativa y entretenida.",
+    "image": "images/justhackme.png",
+    "extraLinks": []
+  },
+  {
+    "repo": "easyPDF",
+    "position": 2,
+    "customTitle": "easyPDF",
+    "customDescription": "Herramienta que agrupa funcionalidades prácticas al estilo de Adobe o iLovePDF, usando librerías de Python con una interfaz sencilla, sin límites y totalmente local.",
+    "image": "images/easypdf.png",
+    "extraLinks": []
+  },
+  {
+    "repo": "easyAssembly",
+    "position": 3,
+    "customTitle": "easyAssembly",
+    "customDescription": "Simplifica la generación de código ensamblador a partir de C: compila a medio camino, limpia el código resultante, ofrece opciones de optimización, detecta el SO y gestiona las dependencias necesarias.",
+    "image": "images/easyassembly.png",
+    "extraLinks": []
+  },
+  {
+    "repo": "startpage",
+    "position": 4,
+    "customTitle": "startpage",
+    "customDescription": "Página de inicio personalizada para el navegador con reloj, fecha y burbujas animadas como accesos directos. Búsquedas via DuckDuckGo. Ligera, personalizable y con aspecto de fondo marino.",
+    "image": "images/startpage.png",
     "extraLinks": []
   }
 ]
