@@ -121,6 +121,7 @@
    ========================================================= */
 const SUPPORTED_LANGS = ['es', 'en', 'ca'];
 const DEFAULT_LANG = 'es';
+const DEFAULT_ROUTE = 'bio';
 
 const i18nState = {
   lang: DEFAULT_LANG,
@@ -185,16 +186,6 @@ async function loadLocale(lang) {
   return response.json();
 }
 
-function pickInitialLanguage() {
-  const fromStorage = localStorage.getItem('portfolio_lang');
-  if (fromStorage && SUPPORTED_LANGS.includes(fromStorage)) return fromStorage;
-
-  const browserLang = (navigator.language || '').slice(0, 2).toLowerCase();
-  if (SUPPORTED_LANGS.includes(browserLang)) return browserLang;
-
-  return DEFAULT_LANG;
-}
-
 function setTextContent(selector, value) {
   const el = document.querySelector(selector);
   if (el && value !== undefined) el.textContent = value;
@@ -229,6 +220,27 @@ function setLinkTextPreservingIcon(anchor, text) {
   }
 }
 
+function updateLanguageSelectorLabels() {
+  const selector = document.getElementById('lang-select');
+  if (!selector) return;
+
+  const isCompact = window.matchMedia('(max-width: 768px)').matches;
+  const localizedLabels = {
+    es: t('languages.es', 'Espanol'),
+    en: t('languages.en', 'English'),
+    ca: t('languages.ca', 'Catala'),
+  };
+
+  selector.classList.toggle('compact', isCompact);
+
+  selector.querySelectorAll('option').forEach(option => {
+    const value = option.value;
+    const short = (option.dataset.short || value).toUpperCase();
+    const full = localizedLabels[value] || value.toUpperCase();
+    option.textContent = isCompact ? short : full;
+  });
+}
+
 /* =========================================================
    NAVIGATION
    ========================================================= */
@@ -241,19 +253,58 @@ const views = {
   terminal: document.getElementById('view-terminal'),
 };
 
-let activeRoute = 'bio';
+let activeRoute = DEFAULT_ROUTE;
+let suppressNextHashEvent = false;
 
-function navigate(route) {
-  if (!views[route] || route === activeRoute) return;
+function getHashState() {
+  const rawHash = window.location.hash.startsWith('#')
+    ? window.location.hash.slice(1)
+    : window.location.hash;
+  const params = new URLSearchParams(rawHash);
+
+  const hashLang = params.get('lang');
+  const hashRoute = params.get('route');
+
+  return {
+    lang: SUPPORTED_LANGS.includes(hashLang) ? hashLang : DEFAULT_LANG,
+    route: views[hashRoute] ? hashRoute : DEFAULT_ROUTE,
+  };
+}
+
+function buildHash(lang, route) {
+  const params = new URLSearchParams();
+  params.set('lang', SUPPORTED_LANGS.includes(lang) ? lang : DEFAULT_LANG);
+  params.set('route', views[route] ? route : DEFAULT_ROUTE);
+  return `#${params.toString()}`;
+}
+
+function updateHashState(options = {}) {
+  const nextHash = buildHash(i18nState.lang, activeRoute);
+  if (window.location.hash === nextHash) return;
+
+  suppressNextHashEvent = true;
+  if (options.replace) {
+    window.history.replaceState(null, '', nextHash);
+  } else {
+    window.location.hash = nextHash;
+  }
+}
+
+function navigate(route, options = {}) {
+  const safeRoute = views[route] ? route : DEFAULT_ROUTE;
+  if (!views[safeRoute]) return;
+  if (safeRoute === activeRoute && !options.force) return;
+
   views[activeRoute]?.classList.remove('active');
-  activeRoute = route;
-  views[route]?.classList.add('active');
+  activeRoute = safeRoute;
+  views[safeRoute]?.classList.add('active');
 
   document.querySelectorAll('nav a').forEach(a => {
-    a.classList.toggle('active', a.dataset.route === route);
+    a.classList.toggle('active', a.dataset.route === safeRoute);
   });
 
-  if (route === 'repos' && !i18nState.reposLoaded) loadRepos();
+  if (safeRoute === 'repos' && !i18nState.reposLoaded) loadRepos();
+  if (!options.skipHashUpdate) updateHashState();
 }
 
 document.querySelectorAll('nav a').forEach(a => {
@@ -543,18 +594,7 @@ function applyHeaderTranslations() {
   setAttribute('#lang-select', 'title', langTitle);
   setAttribute('#lang-select', 'aria-label', langTitle);
 
-  const select = document.getElementById('lang-select');
-  if (select) {
-    const options = {
-      es: t('languages.es', 'Espanol'),
-      en: t('languages.en', 'English'),
-      ca: t('languages.ca', 'Catala'),
-    };
-    Object.entries(options).forEach(([value, label]) => {
-      const option = select.querySelector(`option[value="${value}"]`);
-      if (option) option.textContent = label;
-    });
-  }
+  updateLanguageSelectorLabels();
 
   setTextContent('nav a[data-route="bio"]', t('nav.bio', './bio'));
   setTextContent('nav a[data-route="studies"]', t('nav.studies', './estudios'));
@@ -864,6 +904,7 @@ async function setLanguage(lang, options = {}) {
     if (selector) selector.value = safeLang;
 
     applyAllTranslations();
+    if (!options.skipHashUpdate) updateHashState();
 
     if (withGlitch) {
       await sleep(GLITCH_POST_MS);
@@ -884,6 +925,24 @@ document.getElementById('lang-select')?.addEventListener('change', async e => {
   await setLanguage(e.target.value);
 });
 
+const langSelectorQuery = window.matchMedia('(max-width: 768px)');
+if (typeof langSelectorQuery.addEventListener === 'function') {
+  langSelectorQuery.addEventListener('change', updateLanguageSelectorLabels);
+} else if (typeof langSelectorQuery.addListener === 'function') {
+  langSelectorQuery.addListener(updateLanguageSelectorLabels);
+}
+
+window.addEventListener('hashchange', async () => {
+  if (suppressNextHashEvent) {
+    suppressNextHashEvent = false;
+    return;
+  }
+
+  const state = getHashState();
+  await setLanguage(state.lang, { withGlitch: false, skipHashUpdate: true });
+  navigate(state.route, { skipHashUpdate: true, force: true });
+});
+
 /* =========================================================
    TERMINAL NAV SHORTCUT
    ========================================================= */
@@ -895,6 +954,8 @@ document.querySelector('[data-route="terminal"]')?.addEventListener('click', () 
    INIT
    ========================================================= */
 (async function initApp() {
-  await setLanguage(pickInitialLanguage(), { withGlitch: false });
+  const initialState = getHashState();
+  await setLanguage(initialState.lang, { withGlitch: false, skipHashUpdate: true });
+  navigate(initialState.route, { skipHashUpdate: true, force: true });
   startBootSequence();
 })();

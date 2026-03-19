@@ -4,7 +4,7 @@
     "position": 1,
     "customTitle": "justHackMe",
     "customDescription": "Actividad interactiva para estudiantes de bachillerato que permite familiarizarse de manera divertida con una terminal de Linux, aprendiendo comandos de forma educativa y entretenida.",
-    "image": "images/projects/justhackme.png",
+    "image": "images/projects/justhackme.webp",
     "extraLinks": []
   },
   {
@@ -12,7 +12,7 @@
     "position": 2,
     "customTitle": "easyPDF",
     "customDescription": "Herramienta que agrupa funcionalidades prácticas al estilo de Adobe o iLovePDF, usando librerías de Python con una interfaz sencilla, sin límites y totalmente local.",
-    "image": "images/projects/easypdf.png",
+    "image": "images/projects/easypdf.webp",
     "extraLinks": []
   },
   {
@@ -20,7 +20,7 @@
     "position": 3,
     "customTitle": "easyAssembly",
     "customDescription": "Simplifica la generación de código ensamblador a partir de C: compila a medio camino, limpia el código resultante, ofrece opciones de optimización, detecta el SO y gestiona las dependencias necesarias.",
-    "image": "images/projects/easyassembly.png",
+    "image": "images/projects/easyassembly.webp",
     "extraLinks": []
   },
   {
@@ -28,7 +28,7 @@
     "position": 4,
     "customTitle": "startpage",
     "customDescription": "Página de inicio personalizada para el navegador con reloj, fecha y burbujas animadas como accesos directos. Búsquedas via DuckDuckGo. Ligera, personalizable y con aspecto de fondo marino.",
-    "image": "images/projects/startpage.png",
+    "image": "images/projects/startpage.webp",
     "extraLinks": []
   }
 ]

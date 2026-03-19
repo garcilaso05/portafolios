@@ -198,43 +198,52 @@ nav a.active { color: var(--cyan); border-color: var(--border-hi); background: v
 
 .ctrl-select {
   height: 32px;
-  min-width: 112px;
-  border: 1px solid var(--border);
-  border-radius: var(--r-sm);
+  min-width: 128px;
+  border: 1px solid rgba(0, 200, 255, 0.25);
+  border-radius: 999px;
   background:
-    linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(0, 200, 255, 0.02)),
-    var(--bg-2);
-  color: var(--text);
+    linear-gradient(120deg, rgba(0, 200, 255, 0.14), rgba(0, 255, 136, 0.08)),
+    rgba(7, 14, 25, 0.96);
+  color: #e4f3ff;
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 0.06em;
-  padding: 0 28px 0 10px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 0 34px 0 14px;
   outline: none;
   appearance: none;
   -webkit-appearance: none;
   background-image:
     linear-gradient(45deg, transparent 50%, var(--cyan) 50%),
     linear-gradient(135deg, var(--cyan) 50%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 200, 255, 0.08), rgba(0, 200, 255, 0.02));
+    linear-gradient(120deg, rgba(0, 200, 255, 0.14), rgba(0, 255, 136, 0.08));
   background-position:
-    calc(100% - 13px) calc(50% - 2px),
-    calc(100% - 8px) calc(50% - 2px),
+    calc(100% - 16px) calc(50% - 2px),
+    calc(100% - 11px) calc(50% - 2px),
     0 0;
   background-size: 5px 5px, 5px 5px, 100% 100%;
   background-repeat: no-repeat;
-  transition: color .2s, border-color .2s, box-shadow .2s;
+  transition: color .2s, border-color .2s, box-shadow .2s, transform .2s;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03), 0 4px 14px rgba(0, 200, 255, 0.12);
 }
 .ctrl-select:hover {
   border-color: var(--border-hi);
-  box-shadow: var(--glow-sm);
+  box-shadow: 0 0 0 2px rgba(0,200,255,0.12), 0 8px 20px rgba(0, 200, 255, 0.18);
+  transform: translateY(-1px);
 }
 .ctrl-select:focus {
   border-color: var(--border-hi);
-  box-shadow: var(--glow-sm);
+  box-shadow: 0 0 0 2px rgba(0,200,255,0.16), 0 0 22px rgba(0,200,255,0.26);
 }
 .ctrl-select option {
   background: #0a1220;
   color: var(--text);
+}
+
+.ctrl-select.compact {
+  min-width: 72px;
+  padding-left: 12px;
 }
 
 /* =========================================================
@@ -998,6 +1007,12 @@ footer span { color: var(--muted); }
   .featured-grid { grid-template-columns: 1fr; }
   .header-inner { padding: 0 14px; }
   .logo-text { display: none; }
+  .ctrl-select {
+    min-width: 72px;
+    padding-right: 28px;
+    padding-left: 10px;
+    text-align-last: center;
+  }
 }
 @media (max-width: 480px) {
   .bio-name { font-size: 28px; }
