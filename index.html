@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.github.com ws:; object-src 'none'; base-uri 'self'; form-action 'self';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 <title>Roger García Doncel — Ingeniero Informático</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +18,7 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<!-- hint: roger() -->
 
 <!-- PCB Background Canvas -->
 <canvas id="pcb-canvas"></canvas>
@@ -65,7 +70,7 @@
       <div class="bio-hero">
         <div class="bio-photo-wrap">
           <!-- REPLACE WITH: Professional headshot photo of Roger García Doncel -->
-          <img src="images/profile/photo1.webp" alt="Roger García Doncel" onerror="this.style.background='#0b1020';this.style.minHeight='240px'">
+          <img src="images/profile/photo1.webp" alt="Roger García Doncel">
           <div class="photo-corner tl"></div>
           <div class="photo-corner tr"></div>
           <div class="photo-corner bl"></div>
@@ -173,7 +178,7 @@
 
       <div class="philosophy-block">
         <!-- REPLACE WITH: Funny/relatable programming meme GIF (images/profile/meme.webp) -->
-        <img src="images/profile/meme.webp" alt="Código funcionando" class="philosophy-gif" onerror="this.style.display='none'">
+        <img src="images/profile/meme.webp" alt="Código funcionando" class="philosophy-gif">
         <blockquote>
           "Primero resuelve el problema. Entonces, escribe el código"
           <cite>-- John Johnson</cite>

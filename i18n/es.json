@@ -249,7 +249,7 @@
     "prompt": "roger@portfolio:~$",
     "inputPlaceholder": "escribe un comando...",
     "exec": "EXEC",
-    "intro": "Sistema inicializado. Escribe <span style='color:var(--cyan)'>'help'</span> para ver los comandos disponibles.",
+    "intro": "Sistema inicializado. Escribe 'help' para ver los comandos disponibles.",
     "quickButtons": ["help", "whoami", "skills", "education", "experience", "contact", "awards", "clear"],
     "errors": {
       "commandNotFound": "comando no encontrado: {cmd} — escribe 'help' para ayuda"

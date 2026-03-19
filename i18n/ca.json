@@ -221,7 +221,7 @@
     "prompt": "roger@portfolio:~$",
     "inputPlaceholder": "escriu una comanda...",
     "exec": "EXEC",
-    "intro": "Sistema inicialitzat. Escriu <span style='color:var(--cyan)'>'help'</span> per veure les comandes disponibles.",
+    "intro": "Sistema inicialitzat. Escriu 'help' per veure les comandes disponibles.",
     "quickButtons": ["help", "whoami", "skills", "education", "experience", "contact", "awards", "clear"],
     "errors": {
       "commandNotFound": "comanda no trobada: {cmd} — escriu 'help' per ajuda"

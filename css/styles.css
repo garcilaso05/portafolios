@@ -46,6 +46,15 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+}
+input,
+textarea,
+select,
+option {
+  user-select: text;
+  -webkit-user-select: text;
 }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; height: auto; display: block; }
@@ -57,6 +66,59 @@ button { cursor: pointer; font-family: inherit; }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--cyan), rgba(0,200,255,0.4)); border-radius: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg-1); }
+
+body.hacker-mode {
+  --bg: #000000;
+  --bg-1: #020202;
+  --bg-2: #050505;
+  --surface: rgba(2, 12, 2, 0.9);
+  --border: rgba(0, 255, 120, 0.2);
+  --border-hi: rgba(0, 255, 120, 0.48);
+  --text: #b9ffd0;
+  --muted: #4f9f67;
+  --dim: #2d5a37;
+  --cyan: #00ff88;
+  --cyan-dim: rgba(0, 255, 136, 0.14);
+  --cyan-glow: rgba(0, 255, 136, 0.3);
+  --green: #30ff8a;
+  --green-dim: rgba(48, 255, 138, 0.12);
+  --amber: #7dff4a;
+  --red: #5eff7f;
+  --purple: #39d66f;
+}
+
+body.hacker-mode,
+body.hacker-mode #site,
+body.hacker-mode main,
+body.hacker-mode header,
+body.hacker-mode footer,
+body.hacker-mode .panel,
+body.hacker-mode .terminal,
+body.hacker-mode .term-output,
+body.hacker-mode .featured-card,
+body.hacker-mode .repo-mini,
+body.hacker-mode .bio-card-new,
+body.hacker-mode .job-card,
+body.hacker-mode .recog-card,
+body.hacker-mode .tl-item .tl-inner {
+  background-color: #000000 !important;
+  color: #b9ffd0;
+  border-color: rgba(0, 255, 120, 0.35);
+  box-shadow: 0 0 0 1px rgba(0, 255, 120, 0.18), 0 0 22px rgba(0, 255, 120, 0.12);
+}
+
+body.hacker-mode #pcb-canvas {
+  opacity: 0.78;
+  filter: hue-rotate(80deg) saturate(1.35);
+}
+
+body.hacker-mode a,
+body.hacker-mode .section-title-text,
+body.hacker-mode .logo-text,
+body.hacker-mode .term-title,
+body.hacker-mode .term-prompt {
+  color: #52ff9a;
+}
 
 /* =========================================================
    PCB CANVAS BACKGROUND
@@ -150,15 +212,14 @@ header {
   display: flex; align-items: center; justify-content: center;
   box-shadow: var(--glow-sm);
   position: relative;
+  background-color: rgba(4, 16, 30, 0.9);
+  background-image: url('../images/chip.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 72%;
 }
 .logo-mark::after {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  background: var(--cyan);
-  border-radius: 2px;
-  opacity: 0.7;
-  animation: pulse-mark 2.4s ease-in-out infinite;
+  content: none;
 }
 @keyframes pulse-mark { 0%,100%{ opacity:0.7; } 50%{ opacity:0.3; } }
 .logo-text { font-family: var(--mono); font-size: 13px; color: var(--cyan); letter-spacing: 0.08em; }
@@ -1006,6 +1067,7 @@ footer span { color: var(--muted); }
   .philosophy-block { flex-direction: column; text-align: center; }
   .featured-grid { grid-template-columns: 1fr; }
   .header-inner { padding: 0 14px; }
+  .logo-mark { display: none; }
   .logo-text { display: none; }
   .ctrl-select {
     min-width: 72px;

@@ -221,7 +221,7 @@
     "prompt": "roger@portfolio:~$",
     "inputPlaceholder": "type a command...",
     "exec": "EXEC",
-    "intro": "System initialized. Type <span style='color:var(--cyan)'>'help'</span> to see available commands.",
+    "intro": "System initialized. Type 'help' to see available commands.",
     "quickButtons": ["help", "whoami", "skills", "education", "experience", "contact", "awards", "clear"],
     "errors": {
       "commandNotFound": "command not found: {cmd} — type 'help' for assistance"

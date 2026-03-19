@@ -129,6 +129,7 @@ const i18nState = {
   reposLoaded: false,
   reposCache: null,
   featuredConfigCache: null,
+  reposLoadingPromise: null,
 };
 
 const GLITCH_PRE_MS = 90;
@@ -303,7 +304,12 @@ function navigate(route, options = {}) {
     a.classList.toggle('active', a.dataset.route === safeRoute);
   });
 
-  if (safeRoute === 'repos' && !i18nState.reposLoaded) loadRepos();
+  if (safeRoute === 'repos') {
+    const needsRefresh = !Array.isArray(i18nState.reposCache) || i18nState.reposCache.length === 0;
+    void loadRepos({ forceRefresh: needsRefresh }).catch(() => {
+      // Error UI is already handled inside loadRepos.
+    });
+  }
   if (!options.skipHashUpdate) updateHashState();
 }
 
@@ -356,6 +362,17 @@ async function loadFeaturedReposConfig() {
 function setReposStatusConnecting() {
   const status = t('repos.status.connecting', 'Conectando con api.github.com...');
   setTextContent('#repos-status-text', status);
+}
+
+function attachFeaturedCardImageFallback(cardElement) {
+  const img = cardElement?.querySelector('.fc-img img');
+  const placeholder = cardElement?.querySelector('.fc-img-placeholder');
+  if (!img || !placeholder) return;
+
+  img.addEventListener('error', () => {
+    img.style.display = 'none';
+    placeholder.style.display = 'flex';
+  }, { once: true });
 }
 
 function renderRepos(repos, featuredConfig = []) {
@@ -412,7 +429,7 @@ function renderRepos(repos, featuredConfig = []) {
       card.innerHTML = `
         <div class="fc-img">
           ${imagePath
-            ? `<img src="${imagePath}" alt="${repoName}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+            ? `<img src="${imagePath}" alt="${repoName}" loading="lazy">`
             : ''}
           <div class="fc-img-placeholder" style="display:${imagePath ? 'none' : 'flex'};">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="32" height="32" opacity="0.3"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -431,6 +448,7 @@ function renderRepos(repos, featuredConfig = []) {
             ${renderedExtraLinks}
           </div>
         </div>`;
+      attachFeaturedCardImageFallback(card);
       featuredGrid.appendChild(card);
     });
   }
@@ -457,33 +475,62 @@ function renderRepos(repos, featuredConfig = []) {
   }
 }
 
-async function loadRepos() {
-  i18nState.reposLoaded = true;
-  setReposStatusConnecting();
+async function loadRepos(options = {}) {
+  const forceRefresh = Boolean(options.forceRefresh);
+  const hasRepoCache = Array.isArray(i18nState.reposCache) && i18nState.reposCache.length > 0;
 
-  if (i18nState.reposCache) {
+  if (!forceRefresh && hasRepoCache) {
     const featuredConfig = await loadFeaturedReposConfig();
     renderRepos(i18nState.reposCache, featuredConfig);
-    return;
+    i18nState.reposLoaded = true;
+    return i18nState.reposCache;
   }
 
-  try {
-    const [res, featuredConfig] = await Promise.all([
-      fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`),
-      loadFeaturedReposConfig(),
-    ]);
-    if (!res.ok) throw new Error('API error');
+  if (i18nState.reposLoadingPromise) {
+    return i18nState.reposLoadingPromise;
+  }
 
-    const repos = await res.json();
-    i18nState.reposCache = repos;
-    renderRepos(repos, featuredConfig);
-  } catch (_err) {
-    const errorText = t('repos.status.error', 'Error al conectar con GitHub API.');
-    setTextContent('#repos-status-text', errorText);
+  setReposStatusConnecting();
 
-    const fallback = t('repos.errorFallback', 'No se pudieron cargar los repositorios. Visita github.com/{user}');
-    const html = `<div style="font-family:var(--mono);font-size:12px;color:var(--red);padding:20px;">${formatI18n(fallback, { user: GITHUB_USER })} <a href="https://github.com/${GITHUB_USER}" target="_blank" style="color:var(--cyan)">github.com/${GITHUB_USER}</a></div>`;
-    setHTML('#featured-repos-grid', html);
+  i18nState.reposLoadingPromise = (async () => {
+    try {
+      const [res, featuredConfig] = await Promise.all([
+        fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`),
+        loadFeaturedReposConfig(),
+      ]);
+      if (!res.ok) throw new Error('API error');
+
+      const repos = await res.json();
+      i18nState.reposCache = Array.isArray(repos) ? repos : [];
+      i18nState.reposLoaded = true;
+      renderRepos(i18nState.reposCache, featuredConfig);
+      return i18nState.reposCache;
+    } catch (_err) {
+      i18nState.reposLoaded = false;
+
+      const errorText = t('repos.status.error', 'Error al conectar con GitHub API.');
+      setTextContent('#repos-status-text', errorText);
+
+      const fallback = t('repos.errorFallback', 'No se pudieron cargar los repositorios. Visita github.com/{user}');
+      const html = `<div style="font-family:var(--mono);font-size:12px;color:var(--red);padding:20px;">${formatI18n(fallback, { user: GITHUB_USER })} <a href="https://github.com/${GITHUB_USER}" target="_blank" style="color:var(--cyan)">github.com/${GITHUB_USER}</a></div>`;
+      setHTML('#featured-repos-grid', html);
+      throw _err;
+    } finally {
+      i18nState.reposLoadingPromise = null;
+    }
+  })();
+
+  return i18nState.reposLoadingPromise;
+}
+
+async function rerenderDynamicSections() {
+  const hasRepoCache = Array.isArray(i18nState.reposCache) && i18nState.reposCache.length > 0;
+  if (hasRepoCache || activeRoute === 'repos') {
+    try {
+      await loadRepos({ forceRefresh: !hasRepoCache });
+    } catch (_err) {
+      // Status/fallback UI is handled inside loadRepos.
+    }
   }
 }
 
@@ -493,6 +540,12 @@ async function loadRepos() {
 const termOutput = document.getElementById('term-output');
 const termInput = document.getElementById('term-input');
 const termRun = document.getElementById('term-run');
+
+function sanitizeTerminalInput(raw) {
+  return String(raw ?? '')
+    .replace(/[\u0000-\u001F\u007F]/g, ' ')
+    .slice(0, 120);
+}
 
 function getTerminalDB() {
   return tObj('terminal.db', {});
@@ -504,25 +557,28 @@ function renderTerminalIntro() {
 
   const introLine = document.createElement('div');
   introLine.className = 'term-line out-green';
-  const intro = t('terminal.intro', "Sistema inicializado. Escribe <span style='color:var(--cyan)'>'help'</span> para ver los comandos disponibles.");
-  introLine.innerHTML = intro;
+  const intro = t('terminal.intro', "Sistema inicializado. Escribe 'help' para ver los comandos disponibles.");
+  introLine.textContent = sanitizeTerminalInput(intro);
   termOutput.appendChild(introLine);
 
   const br = document.createElement('div');
   br.className = 'term-line';
-  br.innerHTML = '&nbsp;';
+  br.textContent = ' ';
   termOutput.appendChild(br);
 }
 
 function termWrite(cmd) {
   if (!termOutput) return;
 
+  const safeCmd = sanitizeTerminalInput(cmd).trim();
+  if (!safeCmd) return;
+
   const cmdLine = document.createElement('div');
   cmdLine.className = 'term-line cmd';
-  cmdLine.textContent = cmd;
+  cmdLine.textContent = safeCmd;
   termOutput.appendChild(cmdLine);
 
-  const normalized = cmd.trim().toLowerCase();
+  const normalized = safeCmd.toLowerCase();
   if (normalized === 'clear') {
     termOutput.innerHTML = '';
     return;
@@ -545,7 +601,7 @@ function termWrite(cmd) {
     setTimeout(() => {
       const br = document.createElement('div');
       br.className = 'term-line';
-      br.innerHTML = '&nbsp;';
+      br.textContent = ' ';
       termOutput.appendChild(br);
     }, data.length * 30 + 50);
   } else {
@@ -558,7 +614,7 @@ function termWrite(cmd) {
 
     const br = document.createElement('div');
     br.className = 'term-line';
-    br.innerHTML = '&nbsp;';
+    br.textContent = ' ';
     termOutput.appendChild(br);
   }
 
@@ -566,7 +622,7 @@ function termWrite(cmd) {
 }
 
 termRun?.addEventListener('click', () => {
-  const value = termInput?.value.trim();
+  const value = sanitizeTerminalInput(termInput?.value).trim();
   if (!value) return;
   termWrite(value);
   termInput.value = '';
@@ -574,15 +630,56 @@ termRun?.addEventListener('click', () => {
 
 termInput?.addEventListener('keydown', e => {
   if (e.key !== 'Enter') return;
-  const value = termInput.value.trim();
+  const value = sanitizeTerminalInput(termInput.value).trim();
   if (!value) return;
   termWrite(value);
   termInput.value = '';
 });
 
 document.querySelectorAll('.term-qb').forEach(btn => {
-  btn.addEventListener('click', () => termWrite(btn.dataset.cmd || ''));
+  btn.addEventListener('click', () => termWrite(sanitizeTerminalInput(btn.dataset.cmd || '')));
 });
+
+/* =========================================================
+   UI LOCKDOWN
+   ========================================================= */
+function shouldSkipUiLockdown(target) {
+  return Boolean(target?.closest?.('#lang-select, a[href]'));
+}
+
+document.addEventListener('contextmenu', event => {
+  if (shouldSkipUiLockdown(event.target)) return;
+  event.preventDefault();
+});
+
+document.addEventListener('keydown', event => {
+  if (!(event.ctrlKey || event.metaKey)) return;
+
+  const key = String(event.key || '').toLowerCase();
+  if (!['c', 'v', 'u'].includes(key)) return;
+  if (shouldSkipUiLockdown(event.target)) return;
+
+  event.preventDefault();
+});
+
+/* =========================================================
+   CONSOLE EASTER EGG
+   ========================================================= */
+function activateHackerMode() {
+  document.body.classList.add('hacker-mode');
+  console.clear();
+  console.log('RRRRR   OOOOO   GGGGG  EEEEE  RRRRR');
+  console.log('RR  RR OO   OO GG      EE     RR  RR');
+  console.log('RRRRR  OO   OO GG GGG  EEEE   RRRRR');
+  console.log('RR  RR OO   OO GG  GG  EE     RR  RR');
+  console.log('RR   RR OOOOO   GGGGG  EEEEE  RR   RR');
+  console.log('ACCESS GRANTED :: HACKER MODE ENABLED');
+}
+
+window.roger = function roger() {
+  activateHackerMode();
+  return 'ACCESS_GRANTED';
+};
 
 /* =========================================================
    TRANSLATION APPLIERS
@@ -782,10 +879,6 @@ function applyReposTranslations() {
   setTextContent('#view-repos .featured-section .repos-section-header', t('repos.featuredTitle', 'PROYECTOS_DESTACADOS'));
   setTextContent('#view-repos .all-section .repos-section-header', t('repos.allTitle', 'TODOS_LOS_REPOSITORIOS'));
   setTextContent('#repos-loader', t('repos.loading', 'Cargando repositorios...'));
-
-  if (i18nState.reposCache) {
-    renderRepos(i18nState.reposCache);
-  }
 }
 
 function applyTerminalTranslations() {
@@ -904,6 +997,7 @@ async function setLanguage(lang, options = {}) {
     if (selector) selector.value = safeLang;
 
     applyAllTranslations();
+    await rerenderDynamicSections();
     if (!options.skipHashUpdate) updateHashState();
 
     if (withGlitch) {
@@ -943,6 +1037,23 @@ window.addEventListener('hashchange', async () => {
   navigate(state.route, { skipHashUpdate: true, force: true });
 });
 
+function setupStaticImageFallbacks() {
+  const profileImage = document.querySelector('.bio-photo-wrap img');
+  if (profileImage) {
+    profileImage.addEventListener('error', () => {
+      profileImage.style.background = '#0b1020';
+      profileImage.style.minHeight = '240px';
+    }, { once: true });
+  }
+
+  const memeImage = document.querySelector('.philosophy-gif');
+  if (memeImage) {
+    memeImage.addEventListener('error', () => {
+      memeImage.style.display = 'none';
+    }, { once: true });
+  }
+}
+
 /* =========================================================
    TERMINAL NAV SHORTCUT
    ========================================================= */
@@ -954,6 +1065,7 @@ document.querySelector('[data-route="terminal"]')?.addEventListener('click', () 
    INIT
    ========================================================= */
 (async function initApp() {
+  setupStaticImageFallbacks();
   const initialState = getHashState();
   await setLanguage(initialState.lang, { withGlitch: false, skipHashUpdate: true });
   navigate(initialState.route, { skipHashUpdate: true, force: true });
