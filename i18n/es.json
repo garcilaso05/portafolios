@@ -1,0 +1,335 @@
+{
+  "meta": {
+    "title": "Roger García Doncel — Ingeniero Informático"
+  },
+  "header": {
+    "langSelectorTitle": "Seleccionar idioma"
+  },
+  "languages": {
+    "es": "Español",
+    "en": "English",
+    "ca": "Català"
+  },
+  "nav": {
+    "bio": "./bio",
+    "studies": "./estudios",
+    "experience": "./experiencia",
+    "recognitions": "./reconocimientos",
+    "repos": "./repositorios",
+    "terminal": "./terminal"
+  },
+  "sections": {
+    "bio": "PERFIL_USUARIO",
+    "studies": "TRAYECTORIA_ACADÉMICA",
+    "experience": "EXPERIENCIA_LABORAL",
+    "recognitions": "RECONOCIMIENTOS",
+    "repos": "REPOSITORIOS_GITHUB",
+    "terminal": "TERMINAL_INTERACTIVA"
+  },
+  "boot": {
+    "lines": [
+      "BIOS v2.04 — Roger García System",
+      "Inicializando componentes de hardware......",
+      "Cargando módulos del kernel......",
+      "Montando sistema de archivos [/dev/portfolio]...",
+      "Comprobando integridad de memoria [8192MB OK]...",
+      "Cargando perfil de usuario [garcia_doncel]...",
+      "Iniciando servicios de red......",
+      "Importando base de conocimiento [CS · Música · Náutica]...",
+      "Configurando renderizador GUI......",
+      "Usuario inicializado. Bienvenido."
+    ]
+  },
+  "bio": {
+    "photoAlt": "Roger García Doncel",
+    "badges": [
+      "Linux",
+      "B1 Driver",
+      "EN C1"
+    ],
+    "greeting": "PERFIL_INICIALIZADO",
+    "nameHtml": "Roger <span>García</span> Doncel",
+    "role": "Estudiante de Ingeniería Informática · URV",
+    "stats": [
+      { "value": "3º", "label": "AÑO" },
+      { "value": "URV", "label": "UNIV." },
+      { "value": "5+", "label": "HACKATHONS" },
+      { "value": "9.89", "label": "MEDIA ESO" }
+    ],
+    "social": [
+      "Instagram",
+      "LinkedIn",
+      "GitHub",
+      "Correo Personal",
+      "Universidad"
+    ],
+    "cards": [
+      {
+        "title": "Tecnología & IA",
+        "bodyHtml": "Desde pequeño, el mundo de la tecnología siempre me ha atraído. Intento estar al día con las nuevas tecnologías, los avances de la <strong>IA</strong> y el mundo de la <strong>ciberseguridad</strong>."
+      },
+      {
+        "title": "Monitor de Actividades Náuticas",
+        "bodyHtml": "Soy monitor certificado y navego en <strong>catamarán, laser pico y raquero</strong>. Además, me encantan las actividades de playa como el <strong>snorkel y el voley</strong>. El mar es mi segunda casa."
+      },
+      {
+        "title": "Música & Creatividad",
+        "bodyHtml": "Tengo el <strong>Grado Profesional de Música</strong> y toco la guitarra desde los 6 años. He estudiado <strong>lenguaje musical, armonía, coro</strong>, entre otras materias que alimentan mi alma creativa."
+      },
+      {
+        "title": "Aventura & Naturaleza",
+        "bodyHtml": "Mi <strong>hobby favorito</strong> es ir a la montaña, hacer excursiones por los <strong>Pirineos</strong>, dormir en refugios y desconectar en la naturaleza. Es mi lugar de paz y recarga de energías."
+      },
+      {
+        "title": "Idiomas",
+        "bodyHtml": "Mis lenguas nativas son el <strong>castellano</strong> y el <strong>catalán</strong>. <a href=\"documents/EFSETCertificate.pdf\" download>Tengo un nivel alto de inglés (C1 certificado)</a>"
+      },
+      {
+        "title": "Movilidad",
+        "bodyHtml": "Tengo el <strong>carnet de conducir tipo B</strong>, lo que me permite una movilidad completa para proyectos y oportunidades laborales."
+      }
+    ],
+    "memeAlt": "Código funcionando",
+    "quote": "\"Primero resuelve el problema. Entonces, escribe el código\"",
+    "quoteAuthor": "-- John Johnson"
+  },
+  "studies": {
+    "items": [
+      {
+        "institution": "Instituto Ramon de la Torre",
+        "period": "2017 – 2023",
+        "degree": "ESO + Bachillerato Científico-Tecnológico",
+        "description": "Cursé educación secundaria y bachillerato con especialización en ciencias y tecnología.",
+        "chips": ["Matemáticas", "Física", "Tecnología", "Electrotecnia"],
+        "stats": [
+          { "value": "9.89", "label": "Media ESO" },
+          { "value": "9.5", "label": "Media Bach." },
+          { "value": "10", "label": "TDR" },
+          { "value": "12.5/14", "label": "Selectividad" }
+        ],
+        "badges": ["Conjunto Amalgama", "Concursos Literarios", "Concursos Matemáticos", "Erasmus+ Bélgica"],
+        "actions": ["Certificado Erasmus+", "Web Instituto"]
+      },
+      {
+        "institution": "Conservatori Municipal Vila-Seca",
+        "period": "2012 – 2023",
+        "degree": "Grado Profesional de Música – Guitarra",
+        "description": "Formación musical completa desde los 6 años, iniciando en Torredembarra y culminando con el título oficial en Vila-Seca.",
+        "chips": ["Guitarra", "Armonía", "Música de Cámara", "Nuevas Tecnologías", "Composición", "Canto Coral"],
+        "stats": [
+          { "value": "11", "label": "Años estudio" },
+          { "value": "2", "label": "Centros" },
+          { "value": "Oficial", "label": "Título" }
+        ],
+        "actions": ["Descargar Título", "Web Conservatorio", "Canal YouTube"]
+      },
+      {
+        "institution": "Institut de Nàutica Barcelona",
+        "period": "Verano 2023",
+        "degree": "Técnico Deportivo de Vela",
+        "description": "Certificación profesional en vela con aparell fix i aparell lliure, convirtiendo mi pasión en competencia profesional.",
+        "chips": ["Catamarán", "Patín Catalán", "Windsurf", "Laser Pico", "Optimist"],
+        "stats": [
+          { "value": "2023", "label": "Año" },
+          { "value": "5+", "label": "Embarcaciones" },
+          { "value": "Cert.", "label": "Estado" }
+        ],
+        "badges": ["Monitor de Vela", "Salvamento en Regatas", "Regatista"],
+        "actions": ["Certificado Estudios", "PNB", "Web Instituto"]
+      },
+      {
+        "institution": "Universitat Rovira i Virgili",
+        "period": "2023 – Presente",
+        "degree": "Grado en Ingeniería Informática – 3er Año",
+        "description": "Formación integral en ingeniería informática con participación activa en asociaciones y eventos tecnológicos.",
+        "chips": ["Programación", "Redes e Internet", "Bases de Datos", "Arquitectura", "Matemáticas", "Física"],
+        "stats": [
+          { "value": "3º", "label": "Año Actual" },
+          { "value": "5", "label": "Hackathons" },
+          { "value": "2", "label": "Premios" }
+        ],
+        "badges": ["CodeURV", "Labdoo", "Robotech 2024", "Femmap 2025", "HackUPC 2025", "TalentArena", "MWC 2025", "LauzHack"],
+        "actions": ["Premio Fòrum TRiCS", "Carrera", "Hackató Robotech"]
+      }
+    ]
+  },
+  "experience": {
+    "jobs": [
+      {
+        "name": "Club Marítim Torredembarra",
+        "fields": [
+          { "label": "DURACIÓN", "value": "Verano 2023, Curso 24/25 y Verano 2025" },
+          { "label": "CONTRATO", "value": "Temporal" },
+          { "label": "MODALIDAD", "value": "Presencial" },
+          { "label": "DESCRIPCIÓN", "value": "Monitor de actividades náuticas, salidas y cursos a niños y adultos en diferentes embarcaciones." },
+          { "label": "EMBARCACIONES", "value": "Catamarán · Patín Catalán · WindSurf · Laser Pico" }
+        ],
+        "tags": ["Catamarán", "Patín Catalán", "WindSurf", "Laser Pico"]
+      },
+      {
+        "name": "Universitat Rovira i Virgili – Beca de Investigación",
+        "fields": [
+          { "label": "DURACIÓN", "value": "Verano 2025" },
+          { "label": "CONTRATO", "value": "Beca de Investigación" },
+          { "label": "MODALIDAD", "value": "Híbrida" },
+          { "label": "DESCRIPCIÓN", "value": "Desarrollo y mejora de una página web que permite administrar bases de datos SQL de datos relacionados con feminicidios. Tanto datos sobre las mujeres como los niños huérfanos, para ayudar a prevenir otros casos o mejorar en las acciones posteriores a un suceso como este." },
+          { "label": "TECNOLOGÍAS", "value": "HTML · CSS · JavaScript · AlaSQL" },
+          { "label": "ENLACES", "links": ["Versión Hackathon", "Versión Beca (admin:1234)", "GeoFem"] }
+        ],
+        "tags": ["HTML", "CSS", "JavaScript", "AlaSQL"]
+      }
+    ],
+    "cvButton": "Descargar CV"
+  },
+  "recognitions": {
+    "cards": [
+      {
+        "category": "Instituto",
+        "title": "Premios de Narrativa",
+        "items": [
+          "2.do Premio Puerto de Tarragona (2019)",
+          "2.do Premio Sambori Omnium (2020)",
+          "1.er Premi Puerto de Tarragona (2021)"
+        ],
+        "actions": ["Premios y Reconocimientos", "Mis relatos en Wattpad"]
+      },
+      {
+        "category": "Música",
+        "title": "Premios de Interpretación Musical",
+        "items": [
+          "1.er Premio concurso de guitarra de Vila-Seca",
+          "2.do Premio concurso de interpretación musical José Luis Lopategui",
+          "Mención de Honor del concurso abierto de interpretación musical L'Arjau"
+        ],
+        "actions": ["Premios y Reconocimientos", "Mi Canal de YouTube"]
+      },
+      {
+        "category": "Bachillerato",
+        "title": "Premios Académicos",
+        "items": [
+          "Premio Extraordinario de Bachillerato",
+          "3.er Premio \"Sostenibilitat i Transicio Energetica a Treballs de Recerca\"",
+          "2.do Premio URV-Forum TRICS (TDR)"
+        ],
+        "actions": ["Premios Bachillerato", "Mi TDR: \"Les ciutats del futur\""]
+      },
+      {
+        "category": "Universidad",
+        "title": "Premios Universitarios",
+        "items": [
+          "Premio al Mejor Prototipo Funcional (Hackatón Robotech 2024)",
+          "Primer premio en la Hackatón Femmap 2025",
+          "Participación en el concurso de algoritmia Ada Byron",
+          "Participación en la Hackatón HackUPC 2025",
+          "Participación en la Hackatón LauzHack 2025"
+        ],
+        "actions": ["Hackatón Robotech", "Hackatón Femmap"]
+      }
+    ]
+  },
+  "repos": {
+    "status": {
+      "connecting": "Conectando con api.github.com...",
+      "loaded": "{count} repositorios encontrados · github.com/{user}",
+      "error": "Error al conectar con GitHub API."
+    },
+    "featuredTitle": "PROYECTOS_DESTACADOS",
+    "allTitle": "TODOS_LOS_REPOSITORIOS",
+    "loading": "Cargando repositorios...",
+    "noDescription": "Sin descripción",
+    "cta": {
+      "github": "GitHub",
+      "demo": "Demo",
+      "extra": "Enlace"
+    },
+    "errorFallback": "No se pudieron cargar los repositorios. Visita github.com/{user}"
+  },
+  "terminal": {
+    "topbarTitle": "roger@portfolio:~$",
+    "prompt": "roger@portfolio:~$",
+    "inputPlaceholder": "escribe un comando...",
+    "exec": "EXEC",
+    "intro": "Sistema inicializado. Escribe <span style='color:var(--cyan)'>'help'</span> para ver los comandos disponibles.",
+    "quickButtons": ["help", "whoami", "skills", "education", "experience", "contact", "awards", "clear"],
+    "errors": {
+      "commandNotFound": "comando no encontrado: {cmd} — escribe 'help' para ayuda"
+    },
+    "db": {
+      "whoami": [
+        { "cls": "out-header", "t": "ROGER GARCÍA DONCEL" },
+        { "cls": "out-muted", "t": "Estudiante de Ingeniería Informática · 3er año" },
+        { "cls": "out-muted", "t": "Universidad Rovira i Virgili — Tarragona, España" },
+        { "cls": "", "t": "" },
+        { "cls": "out-cyan", "t": "Lenguas nativas: Castellano, Catalán" },
+        { "cls": "out-cyan", "t": "Inglés: C1 (certificado EFSET)" },
+        { "cls": "out-cyan", "t": "Carnet conducir: Tipo B" },
+        { "cls": "out-green", "t": "Estado: Activo y buscando oportunidades" }
+      ],
+      "skills": [
+        { "cls": "out-header", "t": "STACK TÉCNICO" },
+        { "cls": "out-cyan", "t": "Lenguajes:  C · Java · Python · JavaScript · HTML/CSS · SQL · Bash" },
+        { "cls": "out-cyan", "t": "Sistemas:   Linux (Debian/Ubuntu/Arch) · Windows · UNIX" },
+        { "cls": "out-cyan", "t": "Tools:      Git · GitHub · AlaSQL · VS Code · Docker (básico)" },
+        { "cls": "out-cyan", "t": "Intereses:  IA · Ciberseguridad · Arquitectura de Computadores" },
+        { "cls": "", "t": "" },
+        { "cls": "out-header", "t": "HABILIDADES BLANDAS" },
+        { "cls": "out-muted", "t": "Trabajo en equipo · Liderazgo · Comunicación · Resolución de problemas" }
+      ],
+      "education": [
+        { "cls": "out-header", "t": "FORMACIÓN ACADÉMICA" },
+        { "cls": "out-cyan", "t": "[2023–Hoy]  Grado Ingeniería Informática · URV (3er año)" },
+        { "cls": "out-cyan", "t": "[2012–2023] Grado Profesional de Música · Conservatori Vila-Seca" },
+        { "cls": "out-cyan", "t": "[2017–2023] ESO + Bachillerato Científico-Tecnológico · IES Ramon de la Torre" },
+        { "cls": "out-cyan", "t": "[2023]      Técnico Deportivo de Vela · Institut de Nàutica Barcelona" },
+        { "cls": "", "t": "" },
+        { "cls": "out-amber", "t": "Notas destacadas: ESO 9.89 · Bach. 9.5 · TDR 10 · PAU 12.5/14" },
+        { "cls": "out-amber", "t": "Erasmus+ Bélgica · 5 Hackathons · 2 Premios universitarios" }
+      ],
+      "experience": [
+        { "cls": "out-header", "t": "EXPERIENCIA LABORAL" },
+        { "cls": "out-cyan", "t": "JOB_01 — Club Marítim Torredembarra" },
+        { "cls": "out-muted", "t": "         Monitor actividades náuticas (Verano 2023 · 24/25 · Verano 2025)" },
+        { "cls": "out-muted", "t": "         Catamarán · Patín Catalán · WindSurf · Laser Pico" },
+        { "cls": "", "t": "" },
+        { "cls": "out-cyan", "t": "JOB_02 — Universitat Rovira i Virgili (Beca Investigación)" },
+        { "cls": "out-muted", "t": "         Desarrollo web para base de datos de feminicidios" },
+        { "cls": "out-muted", "t": "         Stack: HTML · CSS · JavaScript · AlaSQL · (Verano 2025)" }
+      ],
+      "contact": [
+        { "cls": "out-header", "t": "CONTACTO" },
+        { "cls": "out-cyan", "t": "Email:     rogergarciadoncel@gmail.com" },
+        { "cls": "out-cyan", "t": "GitHub:    github.com/garcilaso05" },
+        { "cls": "out-cyan", "t": "LinkedIn:  linkedin.com/in/roger-garcía-doncel-737180340" },
+        { "cls": "out-cyan", "t": "Instagram: @rogergd.__" },
+        { "cls": "out-cyan", "t": "Wattpad:   wattpad.com/user/rogergarciadoncel" },
+        { "cls": "out-cyan", "t": "YouTube:   Playlist de guitarra disponible" }
+      ],
+      "awards": [
+        { "cls": "out-header", "t": "RECONOCIMIENTOS Y PREMIOS" },
+        { "cls": "out-green", "t": "[UNIV]  Premio Mejor Prototipo Funcional — Hackatón Robotech 2024" },
+        { "cls": "out-green", "t": "[UNIV]  1er Premio — Hackatón Femmap 2025" },
+        { "cls": "out-amber", "t": "[BACH]  Premio Extraordinario de Bachillerato" },
+        { "cls": "out-amber", "t": "[BACH]  3er Premio Sostenibilitat i Transició Energètica (TDR)" },
+        { "cls": "out-amber", "t": "[BACH]  2do Premio URV-Fòrum TRiCS" },
+        { "cls": "out-cyan", "t": "[MUS]   1er Premio Concurso Guitarra Vila-Seca" },
+        { "cls": "out-cyan", "t": "[MUS]   2do Premio J.L. Lopategui · Mención Honor L'Arjau" },
+        { "cls": "out-muted", "t": "[INST]  1er Premio Puerto de Tarragona Narrativa (2021)" },
+        { "cls": "out-muted", "t": "[INST]  2do Premio Puerto de Tarragona (2019) · 2do Sambori (2020)" }
+      ],
+      "help": [
+        { "cls": "out-header", "t": "COMANDOS DISPONIBLES" },
+        { "cls": "out-muted", "t": "  whoami      Información personal y perfil" },
+        { "cls": "out-muted", "t": "  skills      Stack técnico y habilidades" },
+        { "cls": "out-muted", "t": "  education   Trayectoria académica" },
+        { "cls": "out-muted", "t": "  experience  Experiencia laboral" },
+        { "cls": "out-muted", "t": "  contact     Datos de contacto" },
+        { "cls": "out-muted", "t": "  awards      Premios y reconocimientos" },
+        { "cls": "out-muted", "t": "  clear       Limpiar terminal" }
+      ]
+    }
+  },
+  "footer": {
+    "prefix": "roger@portfolio:~$ echo",
+    "suffix": "\"© 2024 Roger García Doncel — Todos los derechos reservados\""
+  }
+}

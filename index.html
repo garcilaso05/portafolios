@@ -1,32 +1,655 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roger's Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
-  <script src="repos-module.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roger García Doncel — Ingeniero Informático</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<!-- PCB Background Canvas -->
+<canvas id="pcb-canvas"></canvas>
+
+<!-- Boot Screen -->
+<div id="boot-screen">
+  <div id="boot-lines"></div>
+  <div id="boot-bar"><div id="boot-fill"></div></div>
+  <div id="boot-pct">0%</div>
+</div>
+
+<!-- Site -->
+<div id="site">
   <header>
-    <h1>Roger's Portafolio</h1>
-    <nav>
-      <ul>
-        <li><a href="#" data-route="bio">Biografía</a></li>
-        <li><a href="#" data-route="studies">Estudios</a></li>
-        <li><a href="#" data-route="experience">Experiencia</a></li>
-        <li><a href="#" data-route="recognitions">Reconocimientos</a></li>
-        <li><a href="#" data-route="repos">Repositorios</a></li>
-      </ul>
-    </nav>
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <span class="logo-text">RGD<span>://portfolio</span></span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" data-route="bio" class="active">./bio</a></li>
+          <li><a href="#" data-route="studies">./estudios</a></li>
+          <li><a href="#" data-route="experience">./experiencia</a></li>
+          <li><a href="#" data-route="recognitions">./reconocimientos</a></li>
+          <li><a href="#" data-route="repos">./repositorios</a></li>
+          <li><a href="#" data-route="terminal">./terminal</a></li>
+        </ul>
+      </nav>
+      <div class="header-controls">
+        <select id="lang-select" class="ctrl-select" aria-label="Seleccionar idioma" title="Seleccionar idioma">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+          <option value="ca">Català</option>
+        </select>
+      </div>
+    </div>
   </header>
 
-  <main id="content" aria-live="polite"></main>
+  <main>
+    <!-- BIO -->
+    <section class="view active" id="view-bio">
+      <div class="section-header">
+        <span class="section-tag">0x00</span>
+        <span class="section-title-text">PERFIL_USUARIO</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="bio-hero">
+        <div class="bio-photo-wrap">
+          <!-- REPLACE WITH: Professional headshot photo of Roger García Doncel -->
+          <img src="images/profile/photo1.jpg" alt="Roger García Doncel" onerror="this.style.background='#0b1020';this.style.minHeight='240px'">
+          <div class="photo-corner tl"></div>
+          <div class="photo-corner tr"></div>
+          <div class="photo-corner bl"></div>
+          <div class="photo-corner br"></div>
+          <div class="bio-badge-row">
+            <span class="hw-badge">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="5"/><path d="M8 3v2M8 11v2M3 8h2M11 8h2"/></svg>
+              Linux
+            </span>
+            <span class="hw-badge">B1 Driver</span>
+            <span class="hw-badge">EN&nbsp;C1</span>
+          </div>
+        </div>
+        <div class="bio-text">
+          <p class="bio-greeting">PERFIL_INICIALIZADO</p>
+          <h1 class="bio-name">Roger <span>García</span> Doncel</h1>
+          <p class="bio-role">Estudiante de Ingeniería Informática · URV</p>
+          <div class="bio-stats-row">
+            <div class="bio-stat"><span class="val">3º</span><span class="lbl">AÑO</span></div>
+            <div class="bio-stat"><span class="val">URV</span><span class="lbl">UNIV.</span></div>
+            <div class="bio-stat"><span class="val">5+</span><span class="lbl">HACKATHONS</span></div>
+            <div class="bio-stat"><span class="val">9.89</span><span class="lbl">MEDIA ESO</span></div>
+          </div>
+          <div class="social-grid">
+            <a href="https://www.instagram.com/rogergd.__" target="_blank" class="social-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              <span>Instagram</span>
+            </a>
+            <a href="https://www.linkedin.com/in/roger-garc%C3%ADa-doncel-737180340" target="_blank" class="social-item">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/garcilaso05" target="_blank" class="social-item">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="mailto:rogergarciadoncel@gmail.com" class="social-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Correo Personal</span>
+            </a>
+            <a href="https://www.urv.cat/es/" target="_blank" class="social-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="20" height="20"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span>Universidad</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bio-cards">
+        <div class="bio-card-new c-cyan">
+          <div class="bc-head">
+            <div class="bc-icon" style="border-color:rgba(0,200,255,0.3); background:rgba(0,200,255,0.06);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#00c8ff" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <span class="bc-title">Tecnología &amp; IA</span>
+          </div>
+          <p class="bc-body">Desde pequeño, el mundo de la tecnología siempre me ha atraído. Intento estar al día con las nuevas tecnologías, los avances de la <strong>IA</strong> y el mundo de la <strong>ciberseguridad</strong>.</p>
+        </div>
+        <div class="bio-card-new c-cyan">
+          <div class="bc-head">
+            <div class="bc-icon" style="border-color:rgba(0,200,255,0.3); background:rgba(0,200,255,0.06);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#00c8ff" stroke-width="1.5"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+            </div>
+            <span class="bc-title">Monitor de Actividades Náuticas</span>
+          </div>
+          <p class="bc-body">Soy monitor certificado y navego en <strong>catamarán, laser pico y raquero</strong>. Además, me encantan las actividades de playa como el <strong>snorkel y el voley</strong>. El mar es mi segunda casa.</p>
+        </div>
+        <div class="bio-card-new c-purple">
+          <div class="bc-head">
+            <div class="bc-icon" style="border-color:rgba(139,92,246,0.3); background:rgba(139,92,246,0.06);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <span class="bc-title">Música &amp; Creatividad</span>
+          </div>
+          <p class="bc-body">Tengo el <strong>Grado Profesional de Música</strong> y toco la guitarra desde los 6 años. He estudiado <strong>lenguaje musical, armonía, coro</strong>, entre otras materias que alimentan mi alma creativa.</p>
+        </div>
+        <div class="bio-card-new c-green">
+          <div class="bc-head">
+            <div class="bc-icon" style="border-color:rgba(0,255,136,0.3); background:rgba(0,255,136,0.05);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="1.5"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m8 0h3a2 2 0 0 0 2-2v-3"/></svg>
+            </div>
+            <span class="bc-title">Aventura &amp; Naturaleza</span>
+          </div>
+          <p class="bc-body">Mi <strong>hobby favorito</strong> es ir a la montaña, hacer excursiones por los <strong>Pirineos</strong>, dormir en refugios y desconectar en la naturaleza. Es mi lugar de paz y recarga de energías.</p>
+        </div>
+        <div class="bio-card-new c-purple">
+          <div class="bc-head">
+            <div class="bc-icon" style="border-color:rgba(139,92,246,0.3); background:rgba(139,92,246,0.06);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <span class="bc-title">Idiomas</span>
+          </div>
+          <p class="bc-body">Mis lenguas nativas son el <strong>castellano</strong> y el <strong>catalán</strong>. <a href="documents/EFSETCertificate.pdf" download>Tengo un nivel alto de inglés (C1 certificado)</a></p>
+        </div>
+        <div class="bio-card-new c-green">
+          <div class="bc-head">
+            <div class="bc-icon" style="border-color:rgba(0,255,136,0.3); background:rgba(0,255,136,0.05);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <span class="bc-title">Movilidad</span>
+          </div>
+          <p class="bc-body">Tengo el <strong>carnet de conducir tipo B</strong>, lo que me permite una movilidad completa para proyectos y oportunidades laborales.</p>
+        </div>
+      </div>
+
+      <div class="philosophy-block">
+        <!-- REPLACE WITH: Funny/relatable programming meme GIF (images/profile/meme.gif) -->
+        <img src="images/profile/meme.gif" alt="Código funcionando" class="philosophy-gif" onerror="this.style.display='none'">
+        <blockquote>
+          "Primero resuelve el problema. Entonces, escribe el código"
+          <cite>-- John Johnson</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- STUDIES -->
+    <section class="view" id="view-studies">
+      <div class="section-header">
+        <span class="section-tag">0x01</span>
+        <span class="section-title-text">TRAYECTORIA_ACADÉMICA</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-inner">
+            <div class="tl-img" id="c-rdt">
+              <img src="images/education/rdt1.png" alt="Instituto Ramon de la Torre" class="active">
+              <img src="images/education/eso.jpg" alt="Foto Grupo 4ESO">
+              <img src="images/education/rdt2.png" alt="Orla">
+              <img src="images/education/rdt3.png" alt="Día graduación">
+              <img src="images/education/erasmus.png" alt="LogoSWORD Erasmus+">
+            </div>
+            <div class="tl-body">
+              <div class="tl-meta">
+                <h3 class="tl-institution">Instituto Ramon de la Torre</h3>
+                <span class="tl-period">2017 – 2023</span>
+              </div>
+              <p class="tl-degree">ESO + Bachillerato Científico-Tecnológico</p>
+              <p class="tl-desc">Cursé educación secundaria y bachillerato con especialización en ciencias y tecnología.</p>
+              <div class="tl-chips">
+                <span class="chip">Matemáticas</span>
+                <span class="chip">Física</span>
+                <span class="chip">Tecnología</span>
+                <span class="chip">Electrotecnia</span>
+              </div>
+              <div class="tl-stats">
+                <div class="tl-stat"><span class="v">9.89</span><span class="l">Media ESO</span></div>
+                <div class="tl-stat"><span class="v">9.5</span><span class="l">Media Bach.</span></div>
+                <div class="tl-stat"><span class="v">10</span><span class="l">TDR</span></div>
+                <div class="tl-stat"><span class="v">12.5/14</span><span class="l">Selectividad</span></div>
+              </div>
+              <div class="tl-badges">
+                <span class="tl-badge">Conjunto Amalgama</span>
+                <span class="tl-badge">Concursos Literarios</span>
+                <span class="tl-badge">Concursos Matemáticos</span>
+                <span class="tl-badge">Erasmus+ Bélgica</span>
+              </div>
+              <div class="tl-actions">
+                <a href="documents/erasmus.pdf" download class="tl-btn">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M3 13h10M8 3v7M5 8l3 3 3-3"/></svg>
+                  Certificado Erasmus+
+                </a>
+                <a href="https://agora.xtec.cat/insramondelatorre/" target="_blank" class="tl-btn">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M7 7.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0zM10.5 7.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0zM2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8z"/></svg>
+                  Web Instituto
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-inner">
+            <div class="tl-img" id="c-musica">
+              <img src="images/education/musica2.jpg" alt="Escola Municipal de Música" class="active">
+              <img src="images/education/musica.jpg" alt="Concert 25 aniversari escola de música">
+              <img src="images/education/musica3.jpg" alt="Conservatori Municipal Vila-Seca">
+              <img src="images/education/musica4.jpg" alt="Conservatori Municipal Vila-Seca">
+            </div>
+            <div class="tl-body">
+              <div class="tl-meta">
+                <h3 class="tl-institution">Conservatori Municipal Vila-Seca</h3>
+                <span class="tl-period">2012 – 2023</span>
+              </div>
+              <p class="tl-degree">Grado Profesional de Música – Guitarra</p>
+              <p class="tl-desc">Formación musical completa desde los 6 años, iniciando en Torredembarra y culminando con el título oficial en Vila-Seca.</p>
+              <div class="tl-chips">
+                <span class="chip">Guitarra</span>
+                <span class="chip">Armonía</span>
+                <span class="chip">Música de Cámara</span>
+                <span class="chip">Nuevas Tecnologías</span>
+                <span class="chip">Composición</span>
+                <span class="chip">Canto Coral</span>
+              </div>
+              <div class="tl-stats">
+                <div class="tl-stat"><span class="v">11</span><span class="l">Años estudio</span></div>
+                <div class="tl-stat"><span class="v">2</span><span class="l">Centros</span></div>
+                <div class="tl-stat"><span class="v">Oficial</span><span class="l">Título</span></div>
+              </div>
+              <div class="tl-actions">
+                <a href="documents/TituloGradoProfesionalMusica.pdf" download class="tl-btn">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M3 13h10M8 3v7M5 8l3 3 3-3"/></svg>
+                  Descargar Título
+                </a>
+                <a href="https://www.vila-secamusica.cat/" target="_blank" class="tl-btn">Web Conservatorio</a>
+                <a href="https://m.youtube.com/playlist?list=PLPtFZ8I0MpLBqOcrkRcUrIiImphsI0b5G" target="_blank" class="tl-btn">Canal YouTube</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-inner">
+            <div class="tl-img" id="c-mar">
+              <img src="images/education/mar1.jpg" alt="Náutica 1" class="active">
+              <img src="images/education/mar2.jpg" alt="Náutica 2">
+              <img src="images/education/mar3.jpg" alt="Náutica 3">
+              <img src="images/education/mar4.jpg" alt="Náutica 4">
+            </div>
+            <div class="tl-body">
+              <div class="tl-meta">
+                <h3 class="tl-institution">Institut de Nàutica Barcelona</h3>
+                <span class="tl-period">Verano 2023</span>
+              </div>
+              <p class="tl-degree">Técnico Deportivo de Vela</p>
+              <p class="tl-desc">Certificación profesional en vela con aparell fix i aparell lliure, convirtiendo mi pasión en competencia profesional.</p>
+              <div class="tl-chips">
+                <span class="chip">Catamarán</span>
+                <span class="chip">Patín Catalán</span>
+                <span class="chip">Windsurf</span>
+                <span class="chip">Laser Pico</span>
+                <span class="chip">Optimist</span>
+              </div>
+              <div class="tl-stats">
+                <div class="tl-stat"><span class="v">2023</span><span class="l">Año</span></div>
+                <div class="tl-stat"><span class="v">5+</span><span class="l">Embarcaciones</span></div>
+                <div class="tl-stat"><span class="v">Cert.</span><span class="l">Estado</span></div>
+              </div>
+              <div class="tl-badges">
+                <span class="tl-badge">Monitor de Vela</span>
+                <span class="tl-badge">Salvamento en Regatas</span>
+                <span class="tl-badge">Regatista</span>
+              </div>
+              <div class="tl-actions">
+                <a href="documents/CertificatEstudisVela.pdf" download class="tl-btn">Certificado Estudios</a>
+                <a href="documents/PNB.pdf" download class="tl-btn">PNB</a>
+                <a href="https://agora.xtec.cat/ins-nauticabcn/" target="_blank" class="tl-btn">Web Instituto</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-inner">
+            <div class="tl-img" id="c-urv">
+              <img src="images/education/urv1.jpg" alt="Logo ETSE" class="active">
+              <img src="images/education/urv2.jpg" alt="Foto Crai">
+              <img src="images/education/urv3.jpg" alt="Portada YouTube">
+              <img src="images/education/talent.jpeg" alt="TalentArena">
+              <img src="images/education/mwc.jpeg" alt="MWC">
+            </div>
+            <div class="tl-body">
+              <div class="tl-meta">
+                <h3 class="tl-institution">Universitat Rovira i Virgili</h3>
+                <span class="tl-period">2023 – Presente</span>
+              </div>
+              <p class="tl-degree">Grado en Ingeniería Informática – 3er Año</p>
+              <p class="tl-desc">Formación integral en ingeniería informática con participación activa en asociaciones y eventos tecnológicos.</p>
+              <div class="tl-chips">
+                <span class="chip">Programación</span>
+                <span class="chip">Redes e Internet</span>
+                <span class="chip">Bases de Datos</span>
+                <span class="chip">Arquitectura</span>
+                <span class="chip">Matemáticas</span>
+                <span class="chip">Física</span>
+              </div>
+              <div class="tl-stats">
+                <div class="tl-stat"><span class="v">3º</span><span class="l">Año Actual</span></div>
+                <div class="tl-stat"><span class="v">5</span><span class="l">Hackathons</span></div>
+                <div class="tl-stat"><span class="v">2</span><span class="l">Premios</span></div>
+              </div>
+              <div class="tl-badges">
+                <span class="tl-badge">CodeURV</span>
+                <span class="tl-badge">Labdoo</span>
+                <span class="tl-badge">Robotech 2024</span>
+                <span class="tl-badge">Femmap 2025</span>
+                <span class="tl-badge">HackUPC 2025</span>
+                <span class="tl-badge">TalentArena</span>
+                <span class="tl-badge">MWC 2025</span>
+                <span class="tl-badge">LauzHack</span>
+              </div>
+              <div class="tl-actions">
+                <a href="documents/Urv-FòrumTRiCS.pdf" download class="tl-btn">Premio Fòrum TRiCS</a>
+                <a href="https://www.urv.cat/es/estudios/grados/oferta/graudenginyeriainformatica/" target="_blank" class="tl-btn">Carrera</a>
+                <a href="https://diaridigital.urv.cat/estudiants-hackato-robotech/" target="_blank" class="tl-btn">Hackató Robotech</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="view" id="view-experience">
+      <div class="section-header">
+        <span class="section-tag">0x02</span>
+        <span class="section-title-text">EXPERIENCIA_LABORAL</span>
+        <div class="section-line"></div>
+      </div>
+
+      <div class="job-card">
+        <div class="job-head">
+          <span class="job-num">JOB_01</span>
+          <span class="job-name">Club Marítim Torredembarra</span>
+        </div>
+        <div class="job-inner">
+          <div class="job-carousel-wrap" id="c-vela">
+            <a href="https://cmtorredembarra.com/" target="_blank">
+              <img src="images/experience/vela1.JPEG" alt="Vela 1" class="active">
+              <img src="images/experience/vela2.JPEG" alt="Vela 2">
+              <img src="images/experience/vela3.JPEG" alt="Vela 3">
+              <img src="images/experience/vela4.JPEG" alt="Vela 4">
+              <img src="images/experience/vela5.JPEG" alt="Vela 5">
+              <img src="images/experience/vela6.JPEG" alt="Vela 6">
+              <img src="images/experience/vela7.JPEG" alt="Vela 7">
+              <img src="images/experience/vela8.JPEG" alt="Vela 8">
+            </a>
+          </div>
+          <div class="job-info">
+            <div class="job-row">
+              <div class="job-field"><span class="label">DURACIÓN</span><span class="value">Verano 2023, Curso 24/25 y Verano 2025</span></div>
+              <div class="job-field"><span class="label">CONTRATO</span><span class="value">Temporal</span></div>
+              <div class="job-field"><span class="label">MODALIDAD</span><span class="value">Presencial</span></div>
+              <div class="job-field"><span class="label">DESCRIPCIÓN</span><span class="value">Monitor de actividades náuticas, salidas y cursos a niños y adultos en diferentes embarcaciones.</span></div>
+              <div class="job-field">
+                <span class="label">EMBARCACIONES</span>
+                <span class="value">Catamarán · Patín Catalán · WindSurf · Laser Pico</span>
+              </div>
+            </div>
+            <div class="job-tags">
+              <span class="job-tag">Catamarán</span>
+              <span class="job-tag">Patín Catalán</span>
+              <span class="job-tag">WindSurf</span>
+              <span class="job-tag">Laser Pico</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="job-card">
+        <div class="job-head">
+          <span class="job-num">JOB_02</span>
+          <span class="job-name">Universitat Rovira i Virgili – Beca de Investigación</span>
+        </div>
+        <div class="job-inner">
+          <div class="job-carousel-wrap" id="c-eco">
+            <img src="images/experience/EcoASuMemoria.jpg" alt="Proyecto EcoASuMemoria" class="active">
+            <img src="images/experience/GeoFem.jpg" alt="Base de datos SQL">
+          </div>
+          <div class="job-info">
+            <div class="job-row">
+              <div class="job-field"><span class="label">DURACIÓN</span><span class="value">Verano 2025</span></div>
+              <div class="job-field"><span class="label">CONTRATO</span><span class="value">Beca de Investigación</span></div>
+              <div class="job-field"><span class="label">MODALIDAD</span><span class="value">Híbrida</span></div>
+              <div class="job-field"><span class="label">DESCRIPCIÓN</span><span class="value">Desarrollo y mejora de una página web que permite administrar bases de datos SQL de datos relacionados con feminicidios. Tanto datos sobre las mujeres como los niños huérfanos, para ayudar a prevenir otros casos o mejorar en las acciones posteriores a un suceso como este.</span></div>
+              <div class="job-field">
+                <span class="label">TECNOLOGÍAS</span>
+                <span class="value">HTML · CSS · JavaScript · AlaSQL</span>
+              </div>
+              <div class="job-field">
+                <span class="label">ENLACES</span>
+                <span class="value">
+                  <a href="https://garcilaso05.github.io/ecoFeminicidios/" target="_blank">Versión Hackathon</a> &nbsp;·&nbsp;
+                  <a href="https://garcilaso05.github.io/EcoASuMemoria/" target="_blank">Versión Beca (admin:1234)</a> &nbsp;·&nbsp;
+                  <a href="https://garcilaso05.github.io/GeoFem/" target="_blank">GeoFem</a>
+                </span>
+              </div>
+            </div>
+            <div class="job-tags">
+              <span class="job-tag">HTML</span>
+              <span class="job-tag">CSS</span>
+              <span class="job-tag">JavaScript</span>
+              <span class="job-tag">AlaSQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-block">
+        <a href="documents/Curriculum.pdf" download class="cv-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar CV
+        </a>
+      </div>
+    </section>
+
+    <!-- RECOGNITIONS -->
+    <section class="view" id="view-recognitions">
+      <div class="section-header">
+        <span class="section-tag">0x03</span>
+        <span class="section-title-text">RECONOCIMIENTOS</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="recog-list">
+
+        <div class="recog-card">
+          <div class="recog-img-wrap" id="c-insti">
+            <a href="https://agora.xtec.cat/insramondelatorre/general/roger-garcia-guanyador-del-viii-premi-de-narrativa-curta-del-port-de-tarragona-en-la-categoria-de-3r-i-4t-deso/" target="_blank">
+              <img src="images/recognitions/insti1.jpg" alt="Instituto 1" class="active">
+              <img src="images/recognitions/insti2.jpg" alt="Instituto 2">
+              <img src="images/recognitions/insti3.jpg" alt="Instituto 3">
+            </a>
+          </div>
+          <div class="recog-body">
+            <span class="recog-category">Instituto</span>
+            <h3 class="recog-title">Premios de Narrativa</h3>
+            <div class="recog-items">
+              <div class="recog-item">2.do Premio Puerto de Tarragona (2019)</div>
+              <div class="recog-item">2.do Premio Sambori Omnium (2020)</div>
+              <div class="recog-item">1.er Premi Puerto de Tarragona (2021)</div>
+            </div>
+            <div class="recog-actions">
+              <a href="documents/instituto.pdf" download class="recog-btn">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M3 13h10M8 3v7M5 8l3 3 3-3"/></svg>
+                Premios y Reconocimientos
+              </a>
+              <a href="https://www.wattpad.com/user/rogergarciadoncel" target="_blank" class="recog-btn">Mis relatos en Wattpad</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="recog-card">
+          <div class="recog-img-wrap" id="c-concurso">
+            <a href="https://www.youtube.com/watch?v=FQMRouoN6wo" target="_blank">
+              <img src="images/recognitions/concurso1.jpg" alt="Concurso 1" class="active">
+              <img src="images/recognitions/concurso2.jpg" alt="Concurso 2">
+              <img src="images/recognitions/concurso3.jpg" alt="Concurso 3">
+              <img src="images/recognitions/concurso4.jpg" alt="Concurso 4">
+              <img src="images/recognitions/concurso5.jpg" alt="Concurso 5">
+              <img src="images/recognitions/concurso6.jpg" alt="Concurso 6">
+            </a>
+          </div>
+          <div class="recog-body">
+            <span class="recog-category">Música</span>
+            <h3 class="recog-title">Premios de Interpretación Musical</h3>
+            <div class="recog-items">
+              <div class="recog-item">1.er Premio concurso de guitarra de Vila-Seca</div>
+              <div class="recog-item">2.do Premio concurso de interpretación musical José Luis Lopategui</div>
+              <div class="recog-item">Mención de Honor del concurso abierto de interpretación musical L'Arjau</div>
+            </div>
+            <div class="recog-actions">
+              <a href="documents/musica.pdf" download class="recog-btn">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M3 13h10M8 3v7M5 8l3 3 3-3"/></svg>
+                Premios y Reconocimientos
+              </a>
+              <a href="https://m.youtube.com/playlist?list=PLPtFZ8I0MpLBqOcrkRcUrIiImphsI0b5G" target="_blank" class="recog-btn">Mi Canal de YouTube</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="recog-card">
+          <div class="recog-img-wrap" id="c-tdr">
+            <a href="https://www.facebook.com/insrdt/posts/949973576977618/" target="_blank">
+              <img src="images/recognitions/tdr1.jpg" alt="TDR 1" class="active">
+              <img src="images/recognitions/tdr2.jpg" alt="TDR 2">
+              <img src="images/recognitions/tdr3.jpg" alt="TDR 3">
+              <img src="images/recognitions/tdr4.jpg" alt="TDR 4">
+            </a>
+          </div>
+          <div class="recog-body">
+            <span class="recog-category">Bachillerato</span>
+            <h3 class="recog-title">Premios Académicos</h3>
+            <div class="recog-items">
+              <div class="recog-item">Premio Extraordinario de Bachillerato</div>
+              <div class="recog-item">3.er Premio "Sostenibilitat i Transicio Energetica a Treballs de Recerca"</div>
+              <div class="recog-item">2.do Premio URV-Forum TRICS (TDR)</div>
+            </div>
+            <div class="recog-actions">
+              <a href="documents/bat.pdf" download class="recog-btn">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="12" height="12"><path d="M3 13h10M8 3v7M5 8l3 3 3-3"/></svg>
+                Premios Bachillerato
+              </a>
+              <a href="https://drive.google.com/file/d/15v30hpSNcUujSJW0tGRU-4cZHHMxshBy/view?usp=sharing" target="_blank" class="recog-btn">Mi TDR: "Les ciutats del futur"</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="recog-card">
+          <div class="recog-img-wrap" id="c-univ">
+            <a href="https://www.lavanguardia.com/vida/20241219/10223506/estudiantes-urv-disenan-sistemas-roboticos-limpiar-playas-agenciaslv20241219.html" target="_blank">
+              <img src="images/recognitions/urv4.jpeg" alt="Robotech" class="active">
+              <img src="images/recognitions/urv5.jpg" alt="Robotech 2">
+              <img src="images/recognitions/femmap1.jpg" alt="Femmap">
+              <img src="images/recognitions/ada.jpg" alt="Ada Byron">
+            </a>
+          </div>
+          <div class="recog-body">
+            <span class="recog-category">Universidad</span>
+            <h3 class="recog-title">Premios Universitarios</h3>
+            <div class="recog-items">
+              <div class="recog-item">Premio al Mejor Prototipo Funcional (Hackatón Robotech 2024)</div>
+              <div class="recog-item">Primer premio en la Hackatón Femmap 2025</div>
+              <div class="recog-item">Participación en el concurso de algoritmia Ada Byron</div>
+              <div class="recog-item">Participación en la Hackatón HackUPC 2025</div>
+              <div class="recog-item">Participación en la Hackatón LauzHack 2025</div>
+            </div>
+            <div class="recog-actions">
+              <a href="https://diaridigital.urv.cat/estudiants-hackato-robotech/" target="_blank" class="recog-btn">Hackatón Robotech</a>
+              <a href="https://diaridigital.urv.cat/dissenyen-dun-prototip-de-geomapa-que-permetra-millorar-les-estrategies-dintervencio-i-proteccio-a-les-victimes-de-feminicidi/" target="_blank" class="recog-btn">Hackatón Femmap</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- REPOS -->
+    <section class="view" id="view-repos">
+      <div class="section-header">
+        <span class="section-tag">0x04</span>
+        <span class="section-title-text">REPOSITORIOS_GITHUB</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="repos-status-bar">
+        <span class="dot"></span>
+        <span id="repos-status-text">Conectando con api.github.com...</span>
+      </div>
+      <div class="featured-section">
+        <div class="repos-section-header">PROYECTOS_DESTACADOS</div>
+        <div class="featured-grid" id="featured-repos-grid">
+          <div id="repos-loader" style="grid-column:1/-1;text-align:center;padding:40px;font-family:var(--mono);font-size:12px;color:var(--muted);">
+            Cargando repositorios...
+          </div>
+        </div>
+      </div>
+      <div class="all-section">
+        <div class="repos-section-header">TODOS_LOS_REPOSITORIOS</div>
+        <div class="all-grid" id="all-repos-grid"></div>
+      </div>
+    </section>
+
+    <!-- TERMINAL -->
+    <section class="view" id="view-terminal">
+      <div class="section-header">
+        <span class="section-tag">0x05</span>
+        <span class="section-title-text">TERMINAL_INTERACTIVA</span>
+        <div class="section-line"></div>
+      </div>
+      <div class="terminal-wrap">
+        <div class="terminal">
+          <div class="term-topbar">
+            <span class="term-dot td-red"></span>
+            <span class="term-dot td-yellow"></span>
+            <span class="term-dot td-green"></span>
+            <span class="term-title">roger@portfolio:~$</span>
+          </div>
+          <div class="term-output" id="term-output">
+            <div class="term-line out-green">Sistema inicializado. Escribe <span style="color:var(--cyan)">'help'</span> para ver los comandos disponibles.</div>
+            <div class="term-line">&nbsp;</div>
+          </div>
+          <div class="term-input-row">
+            <span class="term-prompt">roger@portfolio:~$</span>
+            <input type="text" class="term-input" id="term-input" placeholder="escribe un comando..." autocomplete="off" spellcheck="false">
+            <button class="term-run-btn" id="term-run">EXEC</button>
+          </div>
+        </div>
+        <div class="term-quick-btns">
+          <button class="term-qb" data-cmd="help">help</button>
+          <button class="term-qb" data-cmd="whoami">whoami</button>
+          <button class="term-qb" data-cmd="skills">skills</button>
+          <button class="term-qb" data-cmd="education">education</button>
+          <button class="term-qb" data-cmd="experience">experience</button>
+          <button class="term-qb" data-cmd="contact">contact</button>
+          <button class="term-qb" data-cmd="awards">awards</button>
+          <button class="term-qb" data-cmd="clear">clear</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <footer>
-    <p>&copy; 2024 Roger's Portfolio. All rights reserved.</p>
+    <span>roger@portfolio:~$ echo</span> "&copy; 2024 Roger García Doncel — Todos los derechos reservados"
   </footer>
+</div>
+
+<script src="js/main.js"></script>
 </body>
 </html>

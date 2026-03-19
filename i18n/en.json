@@ -1,0 +1,307 @@
+{
+  "meta": {
+    "title": "Roger Garcia Doncel — Computer Engineer"
+  },
+  "header": {
+    "langSelectorTitle": "Select language"
+  },
+  "languages": {
+    "es": "Spanish",
+    "en": "English",
+    "ca": "Catalan"
+  },
+  "nav": {
+    "bio": "./bio",
+    "studies": "./studies",
+    "experience": "./experience",
+    "recognitions": "./awards",
+    "repos": "./repositories",
+    "terminal": "./terminal"
+  },
+  "sections": {
+    "bio": "USER_PROFILE",
+    "studies": "ACADEMIC_PATH",
+    "experience": "WORK_EXPERIENCE",
+    "recognitions": "RECOGNITIONS",
+    "repos": "GITHUB_REPOSITORIES",
+    "terminal": "INTERACTIVE_TERMINAL"
+  },
+  "boot": {
+    "lines": [
+      "BIOS v2.04 — Roger Garcia System",
+      "Initializing hardware components......",
+      "Loading kernel modules......",
+      "Mounting filesystem [/dev/portfolio]...",
+      "Checking memory integrity [8192MB OK]...",
+      "Loading user profile [garcia_doncel]...",
+      "Starting network services......",
+      "Importing knowledge base [CS · Music · Nautical]...",
+      "Configuring GUI renderer......",
+      "User initialized. Welcome."
+    ]
+  },
+  "bio": {
+    "photoAlt": "Roger Garcia Doncel",
+    "badges": ["Linux", "B1 Driver", "EN C1"],
+    "greeting": "PROFILE_INITIALIZED",
+    "nameHtml": "Roger <span>Garcia</span> Doncel",
+    "role": "Computer Engineering Student · URV",
+    "stats": [
+      { "value": "3rd", "label": "YEAR" },
+      { "value": "URV", "label": "UNIV." },
+      { "value": "5+", "label": "HACKATHONS" },
+      { "value": "9.89", "label": "HS GPA" }
+    ],
+    "social": ["Instagram", "LinkedIn", "GitHub", "Personal Email", "University"],
+    "cards": [
+      {
+        "title": "Technology & AI",
+        "bodyHtml": "Since I was a child, technology has always fascinated me. I try to stay up to date with new technologies, <strong>AI</strong> advances, and the world of <strong>cybersecurity</strong>."
+      },
+      {
+        "title": "Nautical Activities Instructor",
+        "bodyHtml": "I am a certified instructor and I sail <strong>catamaran, laser pico and raquero</strong>. I also love beach activities such as <strong>snorkeling and volleyball</strong>. The sea is my second home."
+      },
+      {
+        "title": "Music & Creativity",
+        "bodyHtml": "I hold a <strong>Professional Music Degree</strong> and I have played guitar since I was 6 years old. I studied <strong>music language, harmony, choir</strong>, among other subjects that feed my creative soul."
+      },
+      {
+        "title": "Adventure & Nature",
+        "bodyHtml": "My <strong>favorite hobby</strong> is going to the mountains, hiking in the <strong>Pyrenees</strong>, sleeping in mountain huts, and disconnecting in nature. It is my place of peace and energy recharge."
+      },
+      {
+        "title": "Languages",
+        "bodyHtml": "My native languages are <strong>Spanish</strong> and <strong>Catalan</strong>. <a href=\"documents/EFSETCertificate.pdf\" download>I have an advanced English level (certified C1)</a>"
+      },
+      {
+        "title": "Mobility",
+        "bodyHtml": "I hold a <strong>type B driving license</strong>, which gives me full mobility for projects and career opportunities."
+      }
+    ],
+    "memeAlt": "Working code",
+    "quote": "\"First solve the problem. Then, write the code\"",
+    "quoteAuthor": "-- John Johnson"
+  },
+  "studies": {
+    "items": [
+      {
+        "institution": "Ramon de la Torre High School",
+        "period": "2017 – 2023",
+        "degree": "Secondary + Science & Technology Baccalaureate",
+        "description": "I completed secondary school and baccalaureate with a specialization in science and technology.",
+        "chips": ["Mathematics", "Physics", "Technology", "Electrical Engineering"],
+        "stats": [
+          { "value": "9.89", "label": "Secondary GPA" },
+          { "value": "9.5", "label": "Bacc. GPA" },
+          { "value": "10", "label": "Final Project" },
+          { "value": "12.5/14", "label": "University Access" }
+        ],
+        "badges": ["Amalgama Ensemble", "Literary Contests", "Math Contests", "Erasmus+ Belgium"],
+        "actions": ["Erasmus+ Certificate", "School Website"]
+      },
+      {
+        "institution": "Vila-Seca Municipal Conservatory",
+        "period": "2012 – 2023",
+        "degree": "Professional Music Degree – Guitar",
+        "description": "Complete musical training from age 6, starting in Torredembarra and finishing with the official degree in Vila-Seca.",
+        "chips": ["Guitar", "Harmony", "Chamber Music", "New Technologies", "Composition", "Choir"],
+        "stats": [
+          { "value": "11", "label": "Years" },
+          { "value": "2", "label": "Schools" },
+          { "value": "Official", "label": "Degree" }
+        ],
+        "actions": ["Download Degree", "Conservatory Website", "YouTube Channel"]
+      },
+      {
+        "institution": "Barcelona Nautical Institute",
+        "period": "Summer 2023",
+        "degree": "Sports Sailing Technician",
+        "description": "Professional sailing certification in fixed and free rig, turning my passion into professional competence.",
+        "chips": ["Catamaran", "Patin Catala", "Windsurf", "Laser Pico", "Optimist"],
+        "stats": [
+          { "value": "2023", "label": "Year" },
+          { "value": "5+", "label": "Boats" },
+          { "value": "Cert.", "label": "Status" }
+        ],
+        "badges": ["Sailing Instructor", "Regatta Rescue", "Racer"],
+        "actions": ["Study Certificate", "PNB", "Institute Website"]
+      },
+      {
+        "institution": "Rovira i Virgili University",
+        "period": "2023 – Present",
+        "degree": "Computer Engineering Degree – 3rd Year",
+        "description": "Comprehensive training in computer engineering with active participation in associations and technology events.",
+        "chips": ["Programming", "Networks & Internet", "Databases", "Architecture", "Mathematics", "Physics"],
+        "stats": [
+          { "value": "3rd", "label": "Current Year" },
+          { "value": "5", "label": "Hackathons" },
+          { "value": "2", "label": "Awards" }
+        ],
+        "badges": ["CodeURV", "Labdoo", "Robotech 2024", "Femmap 2025", "HackUPC 2025", "TalentArena", "MWC 2025", "LauzHack"],
+        "actions": ["Forum TRiCS Award", "Degree Program", "Robotech Hackathon"]
+      }
+    ]
+  },
+  "experience": {
+    "jobs": [
+      {
+        "name": "Club Maritim Torredembarra",
+        "fields": [
+          { "label": "DURATION", "value": "Summer 2023, Academic Year 24/25 and Summer 2025" },
+          { "label": "CONTRACT", "value": "Temporary" },
+          { "label": "MODE", "value": "On-site" },
+          { "label": "DESCRIPTION", "value": "Nautical activities instructor, outings and courses for children and adults in different boats." },
+          { "label": "BOATS", "value": "Catamaran · Patin Catala · WindSurf · Laser Pico" }
+        ],
+        "tags": ["Catamaran", "Patin Catala", "WindSurf", "Laser Pico"]
+      },
+      {
+        "name": "Rovira i Virgili University – Research Grant",
+        "fields": [
+          { "label": "DURATION", "value": "Summer 2025" },
+          { "label": "CONTRACT", "value": "Research Grant" },
+          { "label": "MODE", "value": "Hybrid" },
+          { "label": "DESCRIPTION", "value": "Development and improvement of a website that manages SQL databases related to femicide data, both women and orphaned children, to help prevention and post-event intervention." },
+          { "label": "TECHNOLOGIES", "value": "HTML · CSS · JavaScript · AlaSQL" },
+          { "label": "LINKS", "links": ["Hackathon Version", "Grant Version (admin:1234)", "GeoFem"] }
+        ],
+        "tags": ["HTML", "CSS", "JavaScript", "AlaSQL"]
+      }
+    ],
+    "cvButton": "Download CV"
+  },
+  "recognitions": {
+    "cards": [
+      {
+        "category": "High School",
+        "title": "Narrative Awards",
+        "items": ["2nd Prize Port of Tarragona (2019)", "2nd Prize Sambori Omnium (2020)", "1st Prize Port of Tarragona (2021)"],
+        "actions": ["Awards and Recognitions", "My stories on Wattpad"]
+      },
+      {
+        "category": "Music",
+        "title": "Musical Performance Awards",
+        "items": ["1st Prize Vila-Seca Guitar Contest", "2nd Prize Jose Luis Lopategui Performance Contest", "Honorable Mention L'Arjau Open Performance Contest"],
+        "actions": ["Awards and Recognitions", "My YouTube Channel"]
+      },
+      {
+        "category": "Baccalaureate",
+        "title": "Academic Awards",
+        "items": ["Extraordinary Baccalaureate Award", "3rd Prize Sustainability and Energy Transition Research Project", "2nd Prize URV-Forum TRICS (TDR)"],
+        "actions": ["Baccalaureate Awards", "My TDR: \"Cities of the future\""]
+      },
+      {
+        "category": "University",
+        "title": "University Awards",
+        "items": ["Best Functional Prototype Award (Robotech Hackathon 2024)", "First Prize at Femmap Hackathon 2025", "Participation in Ada Byron algorithm contest", "Participation in HackUPC 2025", "Participation in LauzHack 2025"],
+        "actions": ["Robotech Hackathon", "Femmap Hackathon"]
+      }
+    ]
+  },
+  "repos": {
+    "status": {
+      "connecting": "Connecting to api.github.com...",
+      "loaded": "{count} repositories found · github.com/{user}",
+      "error": "Error connecting to GitHub API."
+    },
+    "featuredTitle": "FEATURED_PROJECTS",
+    "allTitle": "ALL_REPOSITORIES",
+    "loading": "Loading repositories...",
+    "noDescription": "No description",
+    "cta": {
+      "github": "GitHub",
+      "demo": "Demo",
+      "extra": "Link"
+    },
+    "errorFallback": "Could not load repositories. Visit github.com/{user}"
+  },
+  "terminal": {
+    "topbarTitle": "roger@portfolio:~$",
+    "prompt": "roger@portfolio:~$",
+    "inputPlaceholder": "type a command...",
+    "exec": "EXEC",
+    "intro": "System initialized. Type <span style='color:var(--cyan)'>'help'</span> to see available commands.",
+    "quickButtons": ["help", "whoami", "skills", "education", "experience", "contact", "awards", "clear"],
+    "errors": {
+      "commandNotFound": "command not found: {cmd} — type 'help' for assistance"
+    },
+    "db": {
+      "whoami": [
+        { "cls": "out-header", "t": "ROGER GARCIA DONCEL" },
+        { "cls": "out-muted", "t": "Computer Engineering Student · 3rd year" },
+        { "cls": "out-muted", "t": "Rovira i Virgili University — Tarragona, Spain" },
+        { "cls": "", "t": "" },
+        { "cls": "out-cyan", "t": "Native languages: Spanish, Catalan" },
+        { "cls": "out-cyan", "t": "English: C1 (EFSET certified)" },
+        { "cls": "out-cyan", "t": "Driving license: Type B" },
+        { "cls": "out-green", "t": "Status: Active and looking for opportunities" }
+      ],
+      "skills": [
+        { "cls": "out-header", "t": "TECH STACK" },
+        { "cls": "out-cyan", "t": "Languages:  C · Java · Python · JavaScript · HTML/CSS · SQL · Bash" },
+        { "cls": "out-cyan", "t": "Systems:   Linux (Debian/Ubuntu/Arch) · Windows · UNIX" },
+        { "cls": "out-cyan", "t": "Tools:      Git · GitHub · AlaSQL · VS Code · Docker (basic)" },
+        { "cls": "out-cyan", "t": "Interests:  AI · Cybersecurity · Computer Architecture" },
+        { "cls": "", "t": "" },
+        { "cls": "out-header", "t": "SOFT SKILLS" },
+        { "cls": "out-muted", "t": "Teamwork · Leadership · Communication · Problem solving" }
+      ],
+      "education": [
+        { "cls": "out-header", "t": "EDUCATION" },
+        { "cls": "out-cyan", "t": "[2023–Now]  Computer Engineering Degree · URV (3rd year)" },
+        { "cls": "out-cyan", "t": "[2012–2023] Professional Music Degree · Conservatori Vila-Seca" },
+        { "cls": "out-cyan", "t": "[2017–2023] Secondary + Science & Technology Baccalaureate · Ramon de la Torre" },
+        { "cls": "out-cyan", "t": "[2023]      Sports Sailing Technician · Barcelona Nautical Institute" },
+        { "cls": "", "t": "" },
+        { "cls": "out-amber", "t": "Highlights: Secondary 9.89 · Bacc. 9.5 · TDR 10 · Access 12.5/14" },
+        { "cls": "out-amber", "t": "Erasmus+ Belgium · 5 Hackathons · 2 University Awards" }
+      ],
+      "experience": [
+        { "cls": "out-header", "t": "WORK EXPERIENCE" },
+        { "cls": "out-cyan", "t": "JOB_01 — Club Maritim Torredembarra" },
+        { "cls": "out-muted", "t": "         Nautical activities instructor (Summer 2023 · 24/25 · Summer 2025)" },
+        { "cls": "out-muted", "t": "         Catamaran · Patin Catala · WindSurf · Laser Pico" },
+        { "cls": "", "t": "" },
+        { "cls": "out-cyan", "t": "JOB_02 — Rovira i Virgili University (Research Grant)" },
+        { "cls": "out-muted", "t": "         Web development for femicide database management" },
+        { "cls": "out-muted", "t": "         Stack: HTML · CSS · JavaScript · AlaSQL · (Summer 2025)" }
+      ],
+      "contact": [
+        { "cls": "out-header", "t": "CONTACT" },
+        { "cls": "out-cyan", "t": "Email:     rogergarciadoncel@gmail.com" },
+        { "cls": "out-cyan", "t": "GitHub:    github.com/garcilaso05" },
+        { "cls": "out-cyan", "t": "LinkedIn:  linkedin.com/in/roger-garcia-doncel-737180340" },
+        { "cls": "out-cyan", "t": "Instagram: @rogergd.__" },
+        { "cls": "out-cyan", "t": "Wattpad:   wattpad.com/user/rogergarciadoncel" },
+        { "cls": "out-cyan", "t": "YouTube:   Guitar playlist available" }
+      ],
+      "awards": [
+        { "cls": "out-header", "t": "AWARDS AND RECOGNITIONS" },
+        { "cls": "out-green", "t": "[UNIV]  Best Functional Prototype — Robotech Hackathon 2024" },
+        { "cls": "out-green", "t": "[UNIV]  1st Prize — Femmap Hackathon 2025" },
+        { "cls": "out-amber", "t": "[BACC]  Extraordinary Baccalaureate Award" },
+        { "cls": "out-amber", "t": "[BACC]  3rd Prize Sustainability & Energy Transition (TDR)" },
+        { "cls": "out-amber", "t": "[BACC]  2nd Prize URV-Fòrum TRiCS" },
+        { "cls": "out-cyan", "t": "[MUS]   1st Prize Vila-Seca Guitar Contest" },
+        { "cls": "out-cyan", "t": "[MUS]   2nd Prize J.L. Lopategui · Honorable Mention L'Arjau" },
+        { "cls": "out-muted", "t": "[SCH]   1st Prize Port of Tarragona Narrative (2021)" },
+        { "cls": "out-muted", "t": "[SCH]   2nd Prize Port of Tarragona (2019) · 2nd Sambori (2020)" }
+      ],
+      "help": [
+        { "cls": "out-header", "t": "AVAILABLE COMMANDS" },
+        { "cls": "out-muted", "t": "  whoami      Personal info and profile" },
+        { "cls": "out-muted", "t": "  skills      Tech stack and skills" },
+        { "cls": "out-muted", "t": "  education   Academic path" },
+        { "cls": "out-muted", "t": "  experience  Work experience" },
+        { "cls": "out-muted", "t": "  contact     Contact data" },
+        { "cls": "out-muted", "t": "  awards      Awards and recognitions" },
+        { "cls": "out-muted", "t": "  clear       Clear terminal" }
+      ]
+    }
+  },
+  "footer": {
+    "prefix": "roger@portfolio:~$ echo",
+    "suffix": "\"© 2024 Roger Garcia Doncel — All rights reserved\""
+  }
+}

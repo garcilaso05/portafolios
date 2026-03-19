@@ -1,8 +1,0 @@
-/* Modular CSS: import order matters (tokens -> base -> layout -> components -> animations -> responsive -> utilities) */
-@import url("./css/variables.css");
-@import url("./css/base.css");
-@import url("./css/layout.css");
-@import url("./css/components.css");
-@import url("./css/animations.css");
-@import url("./css/responsive.css");
-@import url("./css/utilities.css");
