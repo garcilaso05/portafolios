@@ -30,5 +30,29 @@
     "customDescription": "Página de inicio personalizada para el navegador con reloj, fecha y burbujas animadas como accesos directos. Búsquedas via DuckDuckGo. Ligera, personalizable y con aspecto de fondo marino.",
     "image": "images/projects/startpage.webp",
     "extraLinks": []
+  },
+  {
+    "repo": "SailNav",
+    "position": 5,
+    "customTitle": "SailNav",
+    "customDescription": "Aplicación web de planificación de travesías a vela con datos de viento en tiempo real. Calcula rutas óptimas teniendo en cuenta los diferentes rumbos náuticos, la intensidad del viento y las capacidades de la embarcación, estimando tiempos de llegada para cada tramo.",
+    "image": "images/projects/sailnav.webp",
+    "extraLinks": []
+  },
+  {
+    "repo": "tarragonaScrollAnimation",
+    "position": 6,
+    "customTitle": "tarragonaScrollAnimation",
+    "customDescription": "Mini página web experimental que explora las posibilidades del scroll como herramienta narrativa, reproduciendo un vídeo aéreo del Anfiteatro Romano de Tarragona sincronizado con el desplazamiento del usuario.",
+    "image": "images/projects/tarragonascrollanimation.webp",
+    "extraLinks": []
+  },
+  {
+    "repo": "mapeodeplayas",
+    "position": 7,
+    "customTitle": "mapeodeplayas",
+    "customDescription": "Script desarrollado para una hackathon centrada en la recogida autónoma de pellets en playas. A partir de imágenes satelitales, detecta y segmenta el terreno en zonas diferenciadas (arena, agua y tierra firme) y genera una planificación de cobertura por áreas adaptada a la autonomía del robot.",
+    "image": "images/projects/mapeodeplayas.webp",
+    "extraLinks": []
   }
 ]
