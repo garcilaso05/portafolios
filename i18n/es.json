@@ -57,7 +57,6 @@
       { "value": "9.89", "label": "MEDIA ESO" }
     ],
     "social": [
-      "Instagram",
       "LinkedIn",
       "GitHub",
       "Correo Personal",
@@ -177,9 +176,22 @@
           { "label": "ENLACES", "links": ["Versión Hackathon", "Versión Beca (admin:1234)", "GeoFem"] }
         ],
         "tags": ["HTML", "CSS", "JavaScript", "AlaSQL"]
+      },
+      {
+        "name": "YMCA Camp Chingachgook",
+        "fields": [
+          { "label": "DURACIÓN", "value": "Junio 2026 – Septiembre 2026" },
+          { "label": "CONTRATO", "value": "Temporal" },
+          { "label": "MODALIDAD", "value": "Presencial" },
+          { "label": "DESCRIPCIÓN", "value": "Coordinador de actividades de vela durante tres meses, organizando todas las actividades del campamento y coordinando a un equipo de 10 monitores. Durante los fines de semana, dirigía el programa Y-Knot, una iniciativa de vela accesible para personas con discapacidades físicas." },
+          { "label": "EMBARCACIONES", "value": "Sonar · Rainbow · Rockets · Sunfish · BICs" },
+          { "label": "CERTIFICACIONES", "value": "Socorrista de la Cruz Roja estadounidense · Conducción de lancha estadounidense · PV de Nueva York" }
+        ],
+        "tags": ["Coordinación", "Y-Knot", "Vela adaptada", "Liderazgo"]
       }
     ],
-    "cvButton": "Descargar CV"
+    "cvButton": "Descargar CV",
+    "documentsButton": "Mis Documentos"
   },
   "recognitions": {
     "cards": [

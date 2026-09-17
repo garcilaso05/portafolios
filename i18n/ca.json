@@ -52,7 +52,7 @@
       { "value": "5+", "label": "HACKATHONS" },
       { "value": "9.89", "label": "MITJANA ESO" }
     ],
-    "social": ["Instagram", "LinkedIn", "GitHub", "Correu Personal", "Universitat"],
+    "social": ["LinkedIn", "GitHub", "Correu Personal", "Universitat"],
     "cards": [
       {
         "title": "Tecnologia & IA",
@@ -167,9 +167,22 @@
           { "label": "ENLLAÇOS", "links": ["Versió Hackathon", "Versió Beca (admin:1234)", "GeoFem"] }
         ],
         "tags": ["HTML", "CSS", "JavaScript", "AlaSQL"]
+      },
+      {
+        "name": "YMCA Camp Chingachgook",
+        "fields": [
+          { "label": "DURADA", "value": "Juny 2026 – Setembre 2026" },
+          { "label": "CONTRACTE", "value": "Temporal" },
+          { "label": "MODALITAT", "value": "Presencial" },
+          { "label": "DESCRIPCIÓ", "value": "Coordinador d'activitats de vela durant tres mesos, organitzant totes les activitats de vela del campament i coordinant un equip de 10 monitors. Durant els caps de setmana, organitzava el programa Y-Knot, una iniciativa de vela accessible per a persones amb discapacitats físiques." },
+          { "label": "EMBARCACIONS", "value": "Sonar · Rainbow · Rockets · Sunfish · BICs" },
+          { "label": "CERTIFICACIONS", "value": "Socorrista de la Creu Roja estatunidenca · Conducció de llanxa estatunidenca · PV de Nova York" }
+        ],
+        "tags": ["Coordinació", "Y-Knot", "Vela adaptada", "Lideratge"]
       }
     ],
-    "cvButton": "Descarregar CV"
+    "cvButton": "Descarregar CV",
+    "documentsButton": "Els meus documents"
   },
   "recognitions": {
     "cards": [

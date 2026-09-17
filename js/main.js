@@ -337,7 +337,7 @@ function startCarousel(containerId, intervalMs = 3200) {
   }, intervalMs);
 }
 
-['c-rdt', 'c-musica', 'c-mar', 'c-urv', 'c-vela', 'c-eco', 'c-insti', 'c-concurso', 'c-tdr', 'c-univ'].forEach(id => startCarousel(id));
+['c-rdt', 'c-musica', 'c-mar', 'c-urv', 'c-vela', 'c-eco', 'c-chingachgook', 'c-insti', 'c-concurso', 'c-tdr', 'c-univ'].forEach(id => startCarousel(id));
 
 /* =========================================================
    GITHUB REPOS
@@ -846,7 +846,8 @@ function applyExperienceTranslations() {
     });
   });
 
-  setLinkTextPreservingIcon(document.querySelector('.cv-btn'), exp.cvButton);
+  setLinkTextPreservingIcon(document.querySelector('.cv-btn[href="documents/Curriculum.pdf"]'), exp.cvButton);
+  setLinkTextPreservingIcon(document.querySelector('.cv-btn[href="documents/Documents.pdf"]'), exp.documentsButton);
 }
 
 function applyRecognitionsTranslations() {

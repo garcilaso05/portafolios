@@ -52,7 +52,7 @@
       { "value": "5+", "label": "HACKATHONS" },
       { "value": "9.89", "label": "HS GPA" }
     ],
-    "social": ["Instagram", "LinkedIn", "GitHub", "Personal Email", "University"],
+    "social": ["LinkedIn", "GitHub", "Personal Email", "University"],
     "cards": [
       {
         "title": "Technology & AI",
@@ -167,9 +167,22 @@
           { "label": "LINKS", "links": ["Hackathon Version", "Grant Version (admin:1234)", "GeoFem"] }
         ],
         "tags": ["HTML", "CSS", "JavaScript", "AlaSQL"]
+      },
+      {
+        "name": "YMCA Camp Chingachgook",
+        "fields": [
+          { "label": "DURATION", "value": "June 2026 – September 2026" },
+          { "label": "CONTRACT", "value": "Temporary" },
+          { "label": "MODE", "value": "On-site" },
+          { "label": "DESCRIPTION", "value": "Sailing activities coordinator for three months, organizing all camp sailing activities and leading a team of 10 instructors. On weekends, I organized the Y-Knot program, an accessible sailing initiative for people with physical disabilities." },
+          { "label": "BOATS", "value": "Sonar · Rainbow · Rockets · Sunfish · BICs" },
+          { "label": "CERTIFICATIONS", "value": "American Red Cross Lifeguard · US Powerboat Operator · New York State boating license" }
+        ],
+        "tags": ["Coordination", "Y-Knot", "Adaptive Sailing", "Leadership"]
       }
     ],
-    "cvButton": "Download CV"
+    "cvButton": "Download CV",
+    "documentsButton": "My Documents"
   },
   "recognitions": {
     "cards": [
